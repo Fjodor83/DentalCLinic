@@ -1,0 +1,104 @@
+@using DentalCLinic.Services
+@using DentalCLinic.Models
+
+<PageTitle>@Service?.Title - Oceanside Dental Centre</PageTitle>
+
+@if (Service != null)
+{
+    <div class="row bg-sage text-white py-3 mb-5">
+        <div class="container">
+            <div class="col-12 text-center">
+                <h1 class="h3 m-0">@Service.Title</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4 p-md-5">
+                        
+                        <!-- Content -->
+                        <div class="service-content mb-5 text-justify">
+                            @((MarkupString)Service.Description)
+                        </div>
+
+                        <!-- Before & After Photos Container -->
+                        @if (!string.IsNullOrEmpty(Service.BeforeImage) && !string.IsNullOrEmpty(Service.AfterImage))
+                        {
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-header bg-sage text-white text-center py-2">
+                                            <span class="small fw-bold">BEFORE</span>
+                                        </div>
+                                        <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 250px;">
+                                            <div class="text-center">
+                                                <span class="material-icons text-sage" style="font-size: 48px;">photo_camera</span>
+                                                <p class="mt-2 small">Photo Placeholder</p>
+                                            </div>
+                                            <!-- <img src="@Service.BeforeImage" class="img-fluid" alt="Before treatment" /> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-header bg-sage text-white text-center py-2">
+                                            <span class="small fw-bold">AFTER</span>
+                                        </div>
+                                        <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 250px;">
+                                            <div class="text-center">
+                                                <span class="material-icons text-sage" style="font-size: 48px;">photo_camera</span>
+                                                <p class="mt-2 small">Photo Placeholder</p>
+                                            </div>
+                                             <!-- <img src="@Service.AfterImage" class="img-fluid" alt="After treatment" /> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="mt-5 text-center">
+                            <NavLink href="contact" class="btn btn-primary-custom text-white px-4 py-2">Book a Consultation</NavLink>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container mt-5">
+        <p>Loading...</p>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string? ServiceSlug { get; set; }
+
+    private ServiceData? Service { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (!string.IsNullOrEmpty(ServiceSlug))
+        {
+            Service = ServiceRepository.GetService(ServiceSlug);
+
+            if (Service == null)
+            {
+                // Fallback for slugs not in the repo yet
+                Service = ServiceRepository.GetPlaceholder(ServiceSlug, GetTitleFromSlug(ServiceSlug));
+            }
+        }
+    }
+
+    private string GetTitleFromSlug(string slug)
+    {
+        // Simple humanizing logic for placeholder titles
+        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(slug.Replace("-", " "));
+    }
+}

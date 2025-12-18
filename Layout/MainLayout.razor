@@ -1,16 +1,56 @@
 ﻿@inherits LayoutComponentBase
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+    <header class="site-header py-3">
+        <div class="container">
+            <NavMenu />
         </div>
+    </header>
 
-        <article class="content px-4">
-            @Body
-        </article>
+    <main class="main-content">
+        @Body
     </main>
+
+    <footer class="site-footer mt-auto py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact Details</h5>
+                    <p>
+                        <strong>Oceanside Dental Centre</strong><br />
+                        175 Corfield St <br />
+                        Parksville, BC, V9P 2G1<br />
+                        Phone: 250.586.4404<br />
+                        Email: info@oceansidedentalcentre.com
+                    </p>
+                </div>
+                <div class="col-md-4">
+                     <h5>Quick Links</h5>
+                     <ul class="list-unstyled">
+                         <li><a href="">Home</a></li>
+                         <li><a href="services">Services</a></li>
+                         <li><a href="contact">Contact Us</a></li>
+                     </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Office Hours</h5>
+                    <p>Mon - Fri: 9:00 AM - 5:00 PM<br>Sat - Sun: Closed</p>
+                </div>
+            </div>
+            <div class="row pt-3 mt-3 border-top">
+                <div class="col-12 text-center mb-3">
+                    <h6 class="text-muted mb-3">We Accept</h6>
+                    <div class="d-flex justify-content-center gap-3 align-items-center flex-wrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" height="40" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" height="40" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express" height="40" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/InteracLogo.svg" alt="Interac" height="40" />
+                        <span class="badge bg-success text-white p-2">CASH</span>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    &copy; @DateTime.Now.Year Oceanside Dental Centre. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>

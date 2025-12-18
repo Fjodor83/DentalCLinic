@@ -1,19 +1,41 @@
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+:root {
+    --color-sage-green: #8C9B7A;
+    --color-sage-dark: #6e7a60;
+    --color-primary-text: #0f2647;
+    --color-bg-light: #F9F9F9;
+    --color-white: #FFFFFF;
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-h1:focus {
-    outline: none;
+html, body {
+    font-family: var(--font-primary);
+    color: var(--color-primary-text);
+    background-color: var(--color-bg-light);
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: var(--color-sage-green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-sage-dark);
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-text);
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--color-sage-green);
+    border-color: var(--color-sage-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-sage-dark);
+    border-color: var(--color-sage-dark);
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -113,3 +135,39 @@ code {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.map-iframe {
+    border: 0;
+}
+
+.fab-directions {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    background-color: #1a73e8;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    text-decoration: none;
+    z-index: 20;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+    .fab-directions i {
+        font-size: 1.4rem;
+    }
+
+    .fab-directions:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 22px rgba(0,0,0,.3);
+        color: #fff;
+    }

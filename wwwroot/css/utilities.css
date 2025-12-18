@@ -1,0 +1,7 @@
+.text-sage {
+    color: var(--color-sage-green) !important;
+}
+
+.bg-sage {
+    background-color: var(--color-sage-green) !important;
+}

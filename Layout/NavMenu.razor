@@ -1,39 +1,80 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">DentalCLinic</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
+﻿
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 py-2">
+    <div class="container-fluid px-0">
+        <a class="navbar-brand py-0 d-flex align-items-center" href="">
+            <img src="images/logo.jpg" alt="Oceanside Dental Centre" height="100" class="d-inline-block align-text-top" />
+        </a>
+        <button class="navbar-toggler border-0" type="button" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon fs-2"></span>
         </button>
+        <div class="@NavMenuCssClass navbar-collapse justify-content-end">
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="" Match="NavLinkMatch.All">Home</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="clinic">Our Clinic</NavLink>
+                </li>
+                 <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="biografy">Biografy</NavLink>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-5 fw-bold mx-2 px-3 py-2 @(showServicesDropdown ? "show" : "")" 
+                       href="#" 
+                       @onclick="ToggleServicesDropdown" 
+                       @onclick:preventDefault>
+                        Services
+                    </a>
+                    <ul class="dropdown-menu @(showServicesDropdown ? "show" : "")" style="min-width: 250px;">
+                        <li><NavLink class="dropdown-item" href="service/bridges" @onclick="CloseDropdown">Bridges</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/composite-restorations" @onclick="CloseDropdown">Composite Restorations (fillings)</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/cosmetic-veneers" @onclick="CloseDropdown">Cosmetic Veneers</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/crowns" @onclick="CloseDropdown">Crowns</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/endo-therapy" @onclick="CloseDropdown">Endo (Root Canal) Therapy</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/extractions" @onclick="CloseDropdown">Extractions</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/hygiene" @onclick="CloseDropdown">Hygiene</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/implant-restoration" @onclick="CloseDropdown">Dental Implant Restoration</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/laser-therapy" @onclick="CloseDropdown">Laser Therapy</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/mini-implants" @onclick="CloseDropdown">Mini Dental Implants</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/sealants" @onclick="CloseDropdown">Pit and Fissure Sealants</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/tmj-pain" @onclick="CloseDropdown">(TMJ) Jaw and Headache Pain</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/whitening" @onclick="CloseDropdown">Whitening</NavLink></li>
+                         <li><hr class="dropdown-divider"></li>
+                        <li><NavLink class="dropdown-item" href="service/children-seniors" @onclick="CloseDropdown">Children & Seniors</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/child-first-visit" @onclick="CloseDropdown">Child’s first visit</NavLink></li>
+                        <li><NavLink class="dropdown-item" href="service/healthy-kids" @onclick="CloseDropdown">Healthy Kids Program</NavLink></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="contact">Contact Us</NavLink>
+                </li>
+                 <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="faq">FAQ</NavLink>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
+</nav>
 
 @code {
     private bool collapseNavMenu = true;
+    private bool showServicesDropdown = false;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void ToggleServicesDropdown()
+    {
+        showServicesDropdown = !showServicesDropdown;
+    }
+
+    private void CloseDropdown()
+    {
+        showServicesDropdown = false;
+        collapseNavMenu = true; // Close the mobile menu too if open
     }
 }

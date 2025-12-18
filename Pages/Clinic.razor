@@ -1,0 +1,159 @@
+﻿@page "/clinic"
+
+<PageTitle>Our Clinic - Oceanside Dental Centre</PageTitle>
+
+<!-- Page Header -->
+<div class="row bg-sage text-white py-3 mb-4">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h1 class="h3 m-0">Our Clinic</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <img src="images/clinic-placeholder.jpg"
+                     alt="Oceanside Dental Centre Exterior"
+                     class="img-fluid rounded shadow-sm w-100"
+                     style="min-height:300px; background-color:#eee;" />
+            </div>
+
+            <h2 class="h4 text-sage fw-bold">Oceanside Dental Centre</h2>
+            <h3 class="h5 text-muted fst-italic mb-3">Family Smiles for a Lifetime</h3>
+
+            <p>
+                At Oceanside Dental Centre, we are delighted to welcome both new and returning patients 
+                to our family-focused practice in the Oceanside community of Parksville, B.C.
+            </p>
+            <p>
+                Our clinic offers a modern and inviting environment, where the expertise and kindness 
+                of our dedicated team ensure that every appointment is a comfortable and positive experience. 
+                We are committed to delivering care that combines professionalism with a gentle, 
+                patient-centered approach.
+            </p>
+            <p>
+                We proudly serve patients of all ages from children to seniors  providing a full range 
+                of family and cosmetic dental services. With a focus on excellence and compassion, 
+                our goal is to help every patient achieve and maintain a healthy, confident smile 
+                that lasts a lifetime.
+            </p>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+
+            <!-- Contact Card -->
+            <div class="card border-0 shadow-sm bg-light mb-4">
+                <div class="card-body">
+                    <h4 class="h5 text-sage border-bottom pb-2 mb-3">
+                        Contact Information
+                    </h4>
+
+                    <ul class="list-unstyled mb-4">
+
+                        <!-- Address -->
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <span class="material-icons text-sage" style="font-size: 20px;">
+                                location_on
+                            </span>
+                            <address class="mb-0">
+                                <strong>Address</strong><br />
+                                175 Corfield St S<br />
+                                Parksville, BC V9P 2G1
+                            </address>
+                        </li>
+
+                        <!-- Phone -->
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <span class="material-icons text-sage" style="font-size: 20px;">
+                                phone
+                            </span>
+                            <div>
+                                <strong>Phone</strong><br />
+                                <a href="tel:2505864404" class="text-decoration-none text-dark">
+                                    250.586.4404
+                                </a>
+                            </div>
+                        </li>
+
+                        <!-- Fax -->
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <span class="material-icons text-sage" style="font-size: 20px;">
+                                print
+                            </span>
+                            <div>
+                                <strong>Fax</strong><br />
+                                <span>250.586.1287</span>
+                            </div>
+                        </li>
+
+                        <!-- Email -->
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <span class="material-icons text-sage" style="font-size: 20px;">
+                                email
+                            </span>
+                            <div>
+                                <strong>Email</strong><br />
+                                <a href="mailto:info@oceansidedentalcentre.com" class="text-decoration-none text-dark">
+                                    info@oceansidedentalcentre.com
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <h4 class="h5 text-sage border-bottom pb-2 mb-3">
+                        Office Hours
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="d-flex justify-content-between">
+                            <span>Monday – Friday</span>
+                            <span>8:00 am – 4:00 pm</span>
+                        </li>
+                        <li class="d-flex justify-content-between text-muted">
+                            <span>Saturday – Sunday</span>
+                            <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Map + FAB -->
+            <div class="map-container position-relative shadow-sm">
+                <iframe src="@MapEmbedUrl"
+                        width="100%"
+                        height="280"
+                        class="map-iframe"
+                        loading="lazy">
+                </iframe>
+
+                <a href="@DirectionsUrl"
+                   target="_blank"
+                   class="fab-directions"
+                   aria-label="Get directions">
+                    <span class="material-icons">
+                        assistant_navigation
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private string Address =
+        "175 Corfield St S, Parksville, BC V9P 2G1, Canada";
+
+    private string MapEmbedUrl =>
+        $"https://www.google.com/maps?q={Uri.EscapeDataString(Address)}&output=embed";
+
+    private string DirectionsUrl =>
+        $"https://www.google.com/maps/dir/?api=1&destination={Uri.EscapeDataString(Address)}";
+}
