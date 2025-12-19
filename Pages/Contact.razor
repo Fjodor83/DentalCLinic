@@ -1,0 +1,125 @@
+@page "/contact"
+
+<PageTitle>Contact Us - Oceanside Dental Centre</PageTitle>
+
+<div class="row bg-sage text-white py-3 mb-5">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h1 class="h3 m-0">Contact Us</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <!-- Contact Info & Map -->
+        <div class="col-lg-5 mb-4">
+            <!-- Our Office Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-sage text-white py-2">
+                    <h2 class="h5 m-0 text-center">Our Office</h2>
+                </div>
+                <div class="card-body">
+                    <address class="mb-0">
+                        <strong class="d-block mb-2 text-sage">Oceanside Dental Centre</strong>
+                        <div class="d-flex mb-2">
+                            <span class="material-icons text-sage me-2">location_on</span>
+                            <span>
+                                175 Corfield St S<br>
+                                Parksville, BC V9P 2G1
+                            </span>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <span class="material-icons text-sage me-2">phone</span>
+                            <span>250.586.4404</span>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <span class="material-icons text-sage me-2">print</span>
+                            <span>250.586.1287</span>
+                        </div>
+                        <div class="d-flex">
+                            <span class="material-icons text-sage me-2">email</span>
+                            <a href="mailto:info@oceansidedentalcentre.com" class="text-decoration-none text-body">info@oceansidedentalcentre.com</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Office Hours Card -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-sage text-white py-2">
+                   <h2 class="h5 m-0 text-center">Office Hours</h2>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Monday</span> <span>8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                            <span>Tuesday</span> <span>8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Wednesday</span> <span>8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                             <span>Thursday</span> <span>8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                             <span>Friday</span> <span>8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
+                             <span>Saturday</span> <span>Closed</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
+                             <span>Sunday</span> <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- Google Map -->
+             <div class="map-container mt-4 border border-secondary shadow-sm" style="overflow:hidden; border-radius: 0.5rem;">
+                 <iframe 
+                     width="100%" 
+                     height="300" 
+                     frameborder="0" 
+                     style="border:0" 
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.471616894676!2d-124.31298868431956!3d49.31972897933544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5488a15999999999%3A0x123456789abcdef!2s175%20Corfield%20St%20S%2C%20Parksville%2C%20BC%20V9P%202G1!5e0!3m2!1sen!2sca!4v1638367890000!5m2!1sen!2sca" 
+                     allowfullscreen>
+                 </iframe>
+             </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="h4 text-sage mb-4">Request an Appointment</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="(250) 555-5555">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message / Preferred Time</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary-custom text-white px-4 py-2">Send Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

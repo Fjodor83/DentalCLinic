@@ -1,3 +1,4 @@
+@page "/service/{ServiceSlug}"
 @using DentalCLinic.Services
 @using DentalCLinic.Models
 
@@ -20,42 +21,55 @@
                     <div class="card-body p-4 p-md-5">
                         
                         <!-- Content -->
-                        <div class="service-content mb-5 text-justify">
-                            @((MarkupString)Service.Description)
+                        <div class="row service-content mb-5 text-justify">
+                            <div class="col-md-6">
+                                @((MarkupString)Service.DescriptionCol1)
+                            </div>
+                            <div class="col-md-6">
+                                @((MarkupString)Service.DescriptionCol2)
+                            </div>
                         </div>
 
                         <!-- Before & After Photos Container -->
-                        @if (!string.IsNullOrEmpty(Service.BeforeImage) && !string.IsNullOrEmpty(Service.AfterImage))
+                        <!-- Images Container -->
+                        @if (!string.IsNullOrEmpty(Service.BeforeImage) || !string.IsNullOrEmpty(Service.AfterImage))
                         {
-                            <div class="row g-4 mb-4">
-                                <div class="col-md-6">
-                                    <div class="card h-100 border-0 shadow-sm">
-                                        <div class="card-header bg-sage text-white text-center py-2">
-                                            <span class="small fw-bold">BEFORE</span>
-                                        </div>
-                                        <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 250px;">
-                                            <div class="text-center">
-                                                <span class="material-icons text-sage" style="font-size: 48px;">photo_camera</span>
-                                                <p class="mt-2 small">Photo Placeholder</p>
+                            <div class="row mb-5">
+                                @if (!string.IsNullOrEmpty(Service.BeforeImage) && !string.IsNullOrEmpty(Service.AfterImage))
+                                {
+                                    // Two Column Layout (Before & After)
+                                    <div class="col-md-6 mb-4 mb-md-0">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-header bg-sage text-white text-center">
+                                                <h5 class="m-0">@Service.BeforeImageLabel</h5>
                                             </div>
-                                            <!-- <img src="@Service.BeforeImage" class="img-fluid" alt="Before treatment" /> -->
+                                            <div class="card-body p-0">
+                                                 <img src="@Service.BeforeImage" class="img-fluid w-100 h-100" style="object-fit:cover; min-height: 300px;" alt="@Service.BeforeImageLabel" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card h-100 border-0 shadow-sm">
-                                        <div class="card-header bg-sage text-white text-center py-2">
-                                            <span class="small fw-bold">AFTER</span>
-                                        </div>
-                                        <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 250px;">
-                                            <div class="text-center">
-                                                <span class="material-icons text-sage" style="font-size: 48px;">photo_camera</span>
-                                                <p class="mt-2 small">Photo Placeholder</p>
+                                    <div class="col-md-6">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-header bg-sage text-white text-center">
+                                                <h5 class="m-0">@Service.AfterImageLabel</h5>
                                             </div>
-                                             <!-- <img src="@Service.AfterImage" class="img-fluid" alt="After treatment" /> -->
+                                            <div class="card-body p-0">
+                                                <img src="@Service.AfterImage" class="img-fluid w-100 h-100" style="object-fit:cover; min-height: 300px;" alt="@Service.AfterImageLabel" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
+                                else if (!string.IsNullOrEmpty(Service.BeforeImage) && string.IsNullOrEmpty(Service.AfterImage))
+                                {
+                                    // Single Image Layout (Full Width)
+                                    <div class="col-12">
+                                        <div class="card border-0 shadow-sm">
+                                            <div class="card-body p-0">
+                                                <img src="@Service.BeforeImage" class="img-fluid w-100" style="object-fit:cover; max-height: 500px;" alt="@Service.Title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         }
 
