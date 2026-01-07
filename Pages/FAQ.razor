@@ -1,0 +1,235 @@
+@page "/faq"
+
+<PageTitle>FAQ - Oceanside Dental Centre</PageTitle>
+
+<!-- Page Header -->
+<div class="row bg-sage text-white py-3 mb-5">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h1 class="h3 m-0">Frequently Asked Questions</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            <div class="text-center mb-5">
+                <p class="lead text-muted">
+                    Here are a few common questions patients ask. If you don't see your question, 
+                    feel free to <a href="contact" class="text-sage fw-bold">contact us</a>.
+                </p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="accordion" id="faqAccordion">
+                
+                <!-- Question 1 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(0) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(0)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            Are you Accepting New Patients?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(0) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-2"><strong class="text-sage">Yes!</strong></p>
+                            <p class="mb-0">
+                                New and returning patients are always welcome. Please 
+                                <a href="contact" class="text-sage">contact us</a> to schedule an appointment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(1) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(1)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            Do you accept Insurance Plans?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(1) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-2"><strong class="text-sage">Yes!</strong></p>
+                            <p class="mb-0">
+                                We accept all types of insurance plans and bill directly to your plan. 
+                                We always try our best to work with your dental insurance to maximize 
+                                the benefits for you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(2) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(2)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            Do you accept the Healthy Kids Dental Plan?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(2) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-2"><strong class="text-sage">Yes!</strong></p>
+                            <p class="mb-0">
+                                Healthy Kids Dental Insurance is accepted at par for all children 
+                                18 years old & under.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(3) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(3)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            What forms of payment do you accept?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(3) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-3">
+                                We accept multiple forms of payment for your convenience:
+                            </p>
+                            <div class="d-flex flex-wrap gap-3 align-items-center">
+                                <span class="badge bg-primary p-2">Visa</span>
+                                <span class="badge bg-warning text-dark p-2">MasterCard</span>
+                                <span class="badge bg-info p-2">American Express</span>
+                                <span class="badge bg-secondary p-2">Interac</span>
+                                <span class="badge bg-success p-2">Cash</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(4) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(4)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            What are your office hours?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(4) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-3">Our office hours are:</p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex justify-content-between border-bottom py-2">
+                                    <span>Monday - Friday</span>
+                                    <strong>8:00 AM - 4:00 PM</strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-2 text-muted">
+                                    <span>Saturday - Sunday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(5) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(5)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            What should I expect on my first visit?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(5) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p>
+                                If you are a New Patient to our office, the first visit will be approximately 
+                                <strong>2 hours</strong>. During this time we will:
+                            </p>
+                            <ul>
+                                <li>Thoroughly assess your present dental condition</li>
+                                <li>Have your teeth cleaned</li>
+                                <li>Discuss any treatment needs or requests you may be considering</li>
+                            </ul>
+                            <p>
+                                You will be asked to complete a questionnaire including patient information, 
+                                health/medical information, dental insurance, employer details and a signed 
+                                consent form.
+                            </p>
+                            <p class="mb-0 text-sage fw-bold">
+                                <span class="material-icons align-middle">info</span>
+                                Please arrive 10 minutes prior to your scheduled appointment with your forms completed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="accordion-item border-0 shadow-sm mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-light text-dark fw-bold @(IsExpanded(6) ? "" : "collapsed")" 
+                                type="button" 
+                                @onclick="() => ToggleAccordion(6)">
+                            <span class="material-icons text-sage me-2">help_outline</span>
+                            What is your cancellation policy?
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(IsExpanded(6) ? "show" : "collapse")">
+                        <div class="accordion-body">
+                            <p class="mb-0">
+                                If you are unable to keep your scheduled appointment or need to make any changes, 
+                                please inform our receptionist <strong>at least 24 hours in advance</strong>. 
+                                This provides us the opportunity to maintain optimal scheduling and meet the 
+                                appointment needs of other patients.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="text-center mt-5 p-4 bg-light rounded shadow-sm">
+                <h4 class="text-sage mb-3">Still have questions?</h4>
+                <p class="text-muted mb-4">
+                    We're here to help! Contact our friendly team for any additional information.
+                </p>
+                <a href="contact" class="btn btn-primary-custom text-white px-4 py-2">
+                    <span class="material-icons align-middle me-1">mail</span>
+                    Contact Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private HashSet<int> expandedItems = new HashSet<int> { 0 };
+
+    private bool IsExpanded(int index) => expandedItems.Contains(index);
+
+    private void ToggleAccordion(int index)
+    {
+        if (expandedItems.Contains(index))
+        {
+            expandedItems.Remove(index);
+        }
+        else
+        {
+            expandedItems.Add(index);
+        }
+    }
+}

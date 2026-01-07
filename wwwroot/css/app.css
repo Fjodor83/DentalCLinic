@@ -197,3 +197,47 @@ code {
     box-shadow: 0 8px 22px rgba(0, 0, 0, .3);
     color: #fff;
 }
+
+/* Accordion styles */
+.accordion-button:not(.collapsed) {
+    background-color: var(--color-sage-green) !important;
+    color: white !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(140, 155, 122, 0.25);
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238C9B7A'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Service cards hover */
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+/* Button outline sage */
+.btn-outline-sage {
+    color: var(--color-sage-green);
+    border-color: var(--color-sage-green);
+}
+
+.btn-outline-sage:hover {
+    background-color: var(--color-sage-green);
+    color: white;
+}
+
+/* Background primary custom */
+.bg-primary-custom {
+    background-color: var(--color-primary-text) !important;
+}
