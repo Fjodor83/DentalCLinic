@@ -394,8 +394,254 @@ namespace DentalCLinic.Services
                         </p>
                     </div>
                 ",
-                BeforeImage = "images/Pit-Fissure.GIF", 
-                AfterImage = "images/bridge-after.jpg"
+                BeforeImage = "images/sealants.jpg", 
+                AfterImage = null
+            },
+            new ServiceData
+            {
+                Slug = "tmj-pain",
+                Title = "TMJ - Jaw and Headache Pain",
+                DescriptionCol1 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>What is TMJ?</h3>
+                        <p>
+                            The temporomandibular joint (TMJ) connects your jawbone to your skull. TMJ disorders can cause pain in your jaw joint and in the muscles that control jaw movement. This condition is sometimes called TMD (temporomandibular disorder).
+                        </p>
+                        <p>
+                            TMJ disorders can be caused by various factors including jaw injury, arthritis, genetics, or habits such as teeth grinding (bruxism). Many people who have jaw pain also tend to clench or grind their teeth, although many people habitually clench or grind their teeth and never develop TMJ disorders.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>Common Symptoms</h3>
+                        <ul>
+                            <li>Pain or tenderness of your jaw</li>
+                            <li>Pain in one or both temporomandibular joints</li>
+                            <li>Aching pain in and around your ear</li>
+                            <li>Difficulty chewing or pain while chewing</li>
+                            <li>Aching facial pain</li>
+                            <li>Locking of the joint, making it difficult to open or close your mouth</li>
+                        </ul>
+                    </div>
+                ",
+                DescriptionCol2 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Treatment Options</h3>
+                        <p>
+                            In some cases, the symptoms of TMJ disorders may go away without treatment. If your symptoms persist, our doctors may recommend a variety of treatment options, often more than one to be done at the same time.
+                        </p>
+                        <p>
+                            <strong>Medications:</strong> Along with other nonsurgical treatments, medications that may help relieve the pain associated with TMJ disorders include pain relievers, anti-inflammatories, muscle relaxants, and in some cases, low doses of tricyclic antidepressants.
+                        </p>
+                        <p>
+                            <strong>Therapies:</strong> Non-drug therapies for TMJ disorders include oral splints or mouth guards (occlusal appliances), physical therapy, and counseling to help you understand the factors and behaviors that may aggravate your pain.
+                        </p>
+                        <p>
+                            If you're experiencing jaw pain, headaches, or difficulty with jaw movement, please contact our office to schedule a consultation. Our team can help diagnose the cause of your discomfort and recommend appropriate treatment options.
+                        </p>
+                    </div>
+                ",
+                BeforeImage = "images/tmj-diagram.jpg",
+                AfterImage = null
+            },
+            new ServiceData
+            {
+                Slug = "whitening",
+                Title = "Teeth Whitening",
+                DescriptionCol1 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Professional Teeth Whitening</h3>
+                        <p>
+                            A brighter, whiter smile can make a significant difference in your appearance and confidence. At Oceanside Dental Centre, we offer professional teeth whitening solutions that are safe, effective, and produce dramatic results.
+                        </p>
+                        <p>
+                            Over time, teeth can become stained or discolored due to various factors including food and beverages (coffee, tea, red wine), tobacco use, aging, medications, and certain medical conditions. Professional whitening can help reverse these effects and restore your smile's natural brightness.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>ZOOM Laser Whitening</h3>
+                        <p>
+                            Our in-office ZOOM laser whitening treatment provides immediate, dramatic results in just one visit. The procedure takes approximately one hour and can whiten your teeth by several shades. A special light-activated gel is applied to your teeth, and the ZOOM light helps accelerate the whitening process.
+                        </p>
+                    </div>
+                ",
+                DescriptionCol2 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Take-Home Bleaching Kits</h3>
+                        <p>
+                            For patients who prefer to whiten their teeth at home, we offer professional-grade take-home bleaching kits. These kits include custom-fitted trays made from impressions of your teeth and professional-strength whitening gel.
+                        </p>
+                        <p>
+                            The custom trays ensure even application of the whitening gel and prevent irritation to your gums. Most patients see noticeable results within one to two weeks of consistent use.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>Which Option is Right for You?</h3>
+                        <p>
+                            <strong>ZOOM In-Office:</strong> Ideal for patients who want immediate results or have a special event coming up.
+                        </p>
+                        <p>
+                            <strong>Take-Home Kits:</strong> Perfect for patients who prefer the convenience of whitening at home on their own schedule.
+                        </p>
+                        <p>
+                            Our dental team can help you determine which whitening option is best suited for your needs and lifestyle. Contact us today to schedule a consultation.
+                        </p>
+                    </div>
+                ",
+                BeforeImage = "images/whitening-before.jpg",
+                AfterImage = "images/whitening-after.jpg",
+                BeforeImageLabel = "BEFORE",
+                AfterImageLabel = "AFTER"
+            },
+            new ServiceData
+            {
+                Slug = "children-seniors",
+                Title = "Children & Seniors Dentistry",
+                DescriptionCol1 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Dentistry for All Stages of Life</h3>
+                        <p>
+                            At Oceanside Dental Centre, we believe that quality dental care should be accessible to patients of all ages. We are proud to offer specialized services for both our youngest and our most experienced patients.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>Children's Dentistry</h3>
+                        <p>
+                            We understand that a child's first dental experiences can shape their attitude toward oral health for life. Our team takes special care to make dental visits fun, educational, and stress-free for children.
+                        </p>
+                        <ul>
+                            <li>We are a <strong>'Healthy Kids'</strong> office</li>
+                            <li>Dental sealants for cavity prevention</li>
+                            <li>Gentle check-ups and cleanings</li>
+                            <li>Preventative approach to a smile for life</li>
+                            <li>Education on proper brushing and flossing techniques</li>
+                        </ul>
+                    </div>
+                ",
+                DescriptionCol2 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Senior's Dentistry</h3>
+                        <p>
+                            As we age, our dental needs change. We offer comprehensive dental services tailored to the unique needs of our senior patients, helping them maintain healthy smiles and optimal oral function.
+                        </p>
+                        <ul>
+                            <li>Full & Partial Dentures</li>
+                            <li>Mini-implants for lower teeth</li>
+                            <li>Cleanings & restorative services</li>
+                            <li>Dry mouth treatment</li>
+                            <li>Gum disease management</li>
+                        </ul>
+                        <div class='alert alert-success mt-4'>
+                            <h5 class='alert-heading'><strong>10% Senior Special Discount</strong></h5>
+                            <p class='mb-0'>We offer a 10% discount on all services for our senior patients!</p>
+                        </div>
+                    </div>
+                ",
+                BeforeImage = "images/children-dentistry.jpg",
+                AfterImage = "images/senior-dentistry.jpg",
+                BeforeImageLabel = "Children",
+                AfterImageLabel = "Seniors"
+            },
+            new ServiceData
+            {
+                Slug = "child-first-visit",
+                Title = "Child's First Visit",
+                DescriptionCol1 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Making the First Visit Special</h3>
+                        <p>
+                            The first dental visit is an important milestone in your child's healthcare journey. At Oceanside Dental Centre, we strive to make this experience positive, fun, and educational.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>When Should My Child First Visit the Dentist?</h3>
+                        <p>
+                            The Canadian Dental Association recommends that children have their first dental visit within six months of the eruption of their first tooth, or by age one. Early visits help establish good oral health habits and allow us to monitor your child's dental development.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>What to Expect</h3>
+                        <p>
+                            During your child's first visit, our friendly team will:
+                        </p>
+                        <ul>
+                            <li>Gently examine your child's teeth and gums</li>
+                            <li>Check for any early signs of decay or developmental issues</li>
+                            <li>Clean the teeth if appropriate</li>
+                            <li>Discuss proper oral hygiene techniques</li>
+                            <li>Answer any questions you may have</li>
+                        </ul>
+                    </div>
+                ",
+                DescriptionCol2 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Preparing Your Child</h3>
+                        <p>
+                            Here are some tips to help prepare your child for their first dental visit:
+                        </p>
+                        <ul>
+                            <li><strong>Stay positive:</strong> Talk about the visit in a positive, matter-of-fact way</li>
+                            <li><strong>Read books:</strong> There are many children's books about visiting the dentist</li>
+                            <li><strong>Play pretend:</strong> Practice 'opening wide' and counting teeth at home</li>
+                            <li><strong>Avoid negative words:</strong> Don't use words like 'hurt,' 'shot,' or 'drill'</li>
+                            <li><strong>Schedule wisely:</strong> Choose a time when your child is usually well-rested</li>
+                        </ul>
+                        <h3 class='h5 text-sage mb-3'>Building Healthy Habits</h3>
+                        <p>
+                            Early dental visits help children understand that taking care of their teeth is a normal, important part of staying healthy. We focus on prevention and education to set your child up for a lifetime of healthy smiles.
+                        </p>
+                        <p>
+                            Contact us today to schedule your child's first dental appointment!
+                        </p>
+                    </div>
+                ",
+                BeforeImage = "images/child-first-visit.jpg",
+                AfterImage = null
+            },
+            new ServiceData
+            {
+                Slug = "healthy-kids",
+                Title = "Healthy Kids Program",
+                DescriptionCol1 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>BC Healthy Kids Program</h3>
+                        <p>
+                            Oceanside Dental Centre is proud to be a participating provider in the BC Healthy Kids Program. This program provides basic dental coverage for eligible children and youth in British Columbia.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>Who is Eligible?</h3>
+                        <p>
+                            The Healthy Kids Program is available to children and youth (18 years and under) in families receiving:
+                        </p>
+                        <ul>
+                            <li>Medical Services Plan (MSP) Premium Assistance</li>
+                            <li>Income Assistance</li>
+                            <li>Disability Assistance</li>
+                        </ul>
+                        <h3 class='h5 text-sage mb-3'>Covered Services</h3>
+                        <p>
+                            The program covers basic dental services including:
+                        </p>
+                        <ul>
+                            <li>Check-ups and examinations</li>
+                            <li>Cleanings</li>
+                            <li>X-rays</li>
+                            <li>Fillings</li>
+                            <li>Extractions</li>
+                        </ul>
+                    </div>
+                ",
+                DescriptionCol2 = @"
+                    <div style='text-align:justify'>
+                        <h3 class='h5 text-sage mb-3'>Our Commitment</h3>
+                        <p>
+                            We accept Healthy Kids Dental Insurance <strong>at par</strong> for all children 18 years old and under. This means families pay no additional fees for covered services.
+                        </p>
+                        <p>
+                            We believe every child deserves access to quality dental care, regardless of their family's financial situation. Our team is committed to providing the same high standard of care to all our patients.
+                        </p>
+                        <h3 class='h5 text-sage mb-3'>How to Enroll</h3>
+                        <p>
+                            If you think your child may be eligible for the Healthy Kids Program, you can:
+                        </p>
+                        <ul>
+                            <li>Contact Health Insurance BC at 1-800-663-7100</li>
+                            <li>Visit <a href='https://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents/benefits/services-covered-by-msp/supplementary-benefits' target='_blank' class='text-sage'>gov.bc.ca</a> for more information</li>
+                            <li>Ask our front desk staff for assistance</li>
+                        </ul>
+                        <p>
+                            Contact us today to schedule an appointment for your child!
+                        </p>
+                    </div>
+                ",
+                BeforeImage = "images/healthy-kids.jpg",
+                AfterImage = null
             }
 
         };
