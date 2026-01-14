@@ -140,6 +140,33 @@
     padding: 1.5rem;
 }
 
+/* ========================================
+   LISTE NEI CARD SERVICES
+   ======================================== */
+
+/* Ingrandimento testo liste per migliore leggibilità */
+.card .list-unstyled li {
+    font-size: 1.05rem;
+    /* Testo più grande */
+    line-height: 1.6;
+    /* Spaziatura verticale migliore */
+    font-weight: 400;
+}
+
+/* Ingrandimento icone check per proporzione */
+.card .list-unstyled .material-icons {
+    font-size: 22px !important;
+    /* Più grande per bilanciare col testo */
+    vertical-align: middle;
+}
+
+/* Link nelle liste */
+.card .list-unstyled a {
+    font-size: inherit;
+    font-weight: 500;
+}
+
+
 /* Card con effetto glassmorphism */
 .card-glass {
     background: rgba(255, 255, 255, 0.95);
@@ -394,14 +421,18 @@
    ======================================== */
 
 .service-grid-item {
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fcff 100%);
+    /* Sfondo con leggero gradiente */
     border-radius: var(--radius-lg);
     padding: 2rem;
     text-align: center;
     transition: all var(--transition-base);
-    border: 2px solid transparent;
+    border: 2px solid rgba(0, 172, 193, 0.2);
+    /* Bordo celeste leggero sempre visibile */
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 119, 190, 0.08);
+    /* Ombra iniziale leggera */
 }
 
 .service-grid-item::before {
@@ -418,13 +449,16 @@
 }
 
 .service-grid-item:hover::before {
-    opacity: 0.03;
+    opacity: 0.05;
+    /* Aumentato leggermente per più contrasto */
 }
 
 .service-grid-item:hover {
     border-color: var(--color-coastal-light);
+    /* Bordo più brillante al hover */
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+    /* Ombra più marcata */
 }
 
 .service-grid-item>* {

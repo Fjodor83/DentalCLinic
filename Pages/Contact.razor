@@ -1,8 +1,11 @@
 @page "/contact"
+@using DentalCLinic.Models
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
 
 <PageTitle>Contact Us - Oceanside Dental Centre</PageTitle>
 
-<div class="row bg-sage text-white py-3 mb-5">
+<div class="row bg-ocean-gradient text-white py-3 mb-5">
     <div class="container">
         <div class="col-12 text-center">
             <h1 class="h3 m-0">Contact Us</h1>
@@ -16,29 +19,29 @@
         <div class="col-lg-5 mb-4">
             <!-- Our Office Card -->
             <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-sage text-white py-2">
+                <div class="card-header bg-ocean-gradient text-white py-2">
                     <h2 class="h5 m-0 text-center">Our Office</h2>
                 </div>
                 <div class="card-body">
                     <address class="mb-0">
-                        <strong class="d-block mb-2 text-sage">Oceanside Dental Centre</strong>
+                        <strong class="d-block mb-2 text-aqua">Oceanside Dental Centre</strong>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-sage me-2">location_on</span>
+                            <span class="material-icons text-aqua me-2">location_on</span>
                             <span>
                                 175 Corfield St S<br>
                                 Parksville, BC V9P 2G1
                             </span>
                         </div>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-sage me-2">phone</span>
+                            <span class="material-icons text-aqua me-2">phone</span>
                             <span>250.586.4404</span>
                         </div>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-sage me-2">print</span>
+                            <span class="material-icons text-aqua me-2">print</span>
                             <span>250.586.1287</span>
                         </div>
                         <div class="d-flex">
-                            <span class="material-icons text-sage me-2">email</span>
+                            <span class="material-icons text-aqua me-2">email</span>
                             <a href="mailto:info@oceansidedentalcentre.com" class="text-decoration-none text-body">info@oceansidedentalcentre.com</a>
                         </div>
                     </address>
@@ -47,7 +50,7 @@
 
             <!-- Office Hours Card -->
             <div class="card border-0 shadow-sm">
-                <div class="card-header bg-sage text-white py-2">
+                <div class="card-header bg-ocean-gradient text-white py-2">
                    <h2 class="h5 m-0 text-center">Office Hours</h2>
                 </div>
                 <div class="card-body p-0">
@@ -94,32 +97,137 @@
         <div class="col-lg-7">
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
-                    <h2 class="h4 text-sage mb-4">Request an Appointment</h2>
-                    <form>
+                    <h2 class="h4 mb-4" style="color: var(--color-ocean-blue);">Request an Appointment</h2>
+                    
+                    @if (showSuccessMessage)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>✓ Message Sent!</strong> We'll contact you soon.
+                            <button type="button" class="btn-close" @onclick="() => showSuccessMessage = false"></button>
+                        </div>
+                    }
+
+                    @if (showErrorMessage)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>✗ Error!</strong> @errorMessage
+                            <button type="button" class="btn-close" @onclick="() => showErrorMessage = false"></button>
+                        </div>
+                    }
+
+                    <EditForm Model="@contactForm" OnValidSubmit="HandleSubmit">
+                        <DataAnnotationsValidator />
+                        
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <InputText @bind-Value="contactForm.Name" class="form-control" id="name" placeholder="Your Name" />
+                            <ValidationMessage For="@(() => contactForm.Name)" class="text-danger small" />
                         </div>
+                        
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                                <InputText @bind-Value="contactForm.Email" class="form-control" id="email" type="email" placeholder="name@example.com" />
+                                <ValidationMessage For="@(() => contactForm.Email)" class="text-danger small" />
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="(250) 555-5555">
+                                <InputText @bind-Value="contactForm.Phone" class="form-control" id="phone" placeholder="(250) 555-5555" />
+                                <ValidationMessage For="@(() => contactForm.Phone)" class="text-danger small" />
                             </div>
                         </div>
+                        
                         <div class="mb-3">
                             <label for="message" class="form-label">Message / Preferred Time</label>
-                            <textarea class="form-control" id="message" rows="4" placeholder="How can we help you?"></textarea>
+                            <InputTextArea @bind-Value="contactForm.Message" class="form-control" id="message" rows="4" placeholder="How can we help you?" />
+                            <ValidationMessage For="@(() => contactForm.Message)" class="text-danger small" />
                         </div>
+                        
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary-custom text-white px-4 py-2">Send Request</button>
+                            <button type="submit" class="btn btn-primary-custom text-white px-4 py-2" disabled="@isSubmitting">
+                                @if (isSubmitting)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    <span>Sending...</span>
+                                }
+                                else
+                                {
+                                    <span>Send Request</span>
+                                }
+                            </button>
                         </div>
-                    </form>
+                    </EditForm>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@code {
+    private ContactFormModel contactForm = new();
+    private bool isSubmitting = false;
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
+    private string errorMessage = string.Empty;
+
+    // TODO: Replace these with your actual EmailJS credentials
+    private const string EMAILJS_PUBLIC_KEY = "mXFjDQyR3cPRKqaG4";
+    private const string EMAILJS_SERVICE_ID = "service_rhzwm29";
+    private const string EMAILJS_TEMPLATE_ID = "template_mk7gnho";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                // Initialize EmailJS
+                await JS.InvokeVoidAsync("emailService.initialize", EMAILJS_PUBLIC_KEY);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing EmailJS: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        isSubmitting = true;
+        showSuccessMessage = false;
+        showErrorMessage = false;
+
+        try
+        {
+            // Create form data object for JavaScript
+            var formData = new
+            {
+                name = contactForm.Name,
+                email = contactForm.Email,
+                phone = contactForm.Phone,
+                message = contactForm.Message
+            };
+
+            // Send email via EmailJS
+            await JS.InvokeVoidAsync("emailService.sendEmail", 
+                EMAILJS_SERVICE_ID, 
+                EMAILJS_TEMPLATE_ID, 
+                formData);
+
+            // Success!
+            showSuccessMessage = true;
+            contactForm = new ContactFormModel(); // Reset form
+        }
+        catch (Exception ex)
+        {
+            // Error
+            showErrorMessage = true;
+            errorMessage = "An error occurred while sending. Please try again later.";
+            Console.WriteLine($"Error sending email: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}
