@@ -1,1 +1,209 @@
-/* Styles removed for new horizontal layout */
+/* ========================================
+   NAVBAR - OCEANSIDE DENTAL CENTRE
+   Horizontal Layout with Modern Effects
+   ======================================== */
+
+.navbar {
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-base);
+}
+
+.navbar-brand {
+    transition: transform var(--transition-base);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.02);
+}
+
+.navbar-brand img {
+    transition: filter var(--transition-base);
+}
+
+.navbar-brand img:hover {
+    filter: brightness(1.05);
+}
+
+/* ========================================
+   NAVBAR TOGGLER (Mobile)
+   ======================================== */
+
+.navbar-toggler {
+    padding: 0.5rem;
+    border: 2px solid var(--color-ocean-blue);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.navbar-toggler:hover {
+    background-color: var(--color-ocean-blue);
+    transform: scale(1.05);
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 119, 190, 0.25);
+}
+
+.navbar-toggler-icon {
+    transition: filter var(--transition-base);
+}
+
+/* ========================================
+   NAV LINKS
+   ======================================== */
+
+.navbar-nav .nav-link {
+    position: relative;
+    color: var(--color-primary-text);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    transition: width var(--transition-base);
+    border-radius: var(--radius-full);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: var(--color-ocean-blue);
+    background-color: rgba(0, 119, 190, 0.05);
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover::before {
+    width: 70%;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--color-ocean-blue);
+    background-color: rgba(0, 119, 190, 0.08);
+}
+
+.navbar-nav .nav-link.active::before {
+    width: 80%;
+}
+
+.navbar-nav .nav-link:focus-visible {
+    outline: 2px solid var(--color-coastal-light);
+    outline-offset: 2px;
+}
+
+
+/* ========================================
+   MOBILE MENU (Collapsed)
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-lg);
+        margin-top: 1rem;
+        padding: 1rem;
+        box-shadow: var(--shadow-lg);
+        animation: mobileMenuSlide var(--transition-base) ease-out;
+    }
+
+    @keyframes mobileMenuSlide {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-link {
+        margin: 0.25rem 0;
+    }
+
+    .dropdown-menu {
+        box-shadow: none;
+        background: rgba(0, 119, 190, 0.03);
+        margin-top: 0.25rem;
+        margin-left: 1rem;
+        border-left: 3px solid var(--color-coastal-light);
+    }
+
+    .dropdown-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   DESKTOP ENHANCEMENTS
+   ======================================== */
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        gap: 0.25rem;
+    }
+
+    .dropdown-menu {
+        min-width: 280px;
+    }
+
+    /* Smooth dropdown appearance */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus states for keyboard navigation */
+.nav-link:focus,
+.dropdown-item:focus,
+.navbar-toggler:focus {
+    outline: 2px solid var(--color-ocean-blue);
+    outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-link::before,
+    .dropdown-item::before,
+    .dropdown-toggle::after {
+        transition: none;
+    }
+
+    .navbar-collapse,
+    .dropdown-menu {
+        animation: none;
+    }
+}
+
+/* ========================================
+   STICKY NAVBAR (Optional Enhancement)
+   ======================================== */
+
+.navbar.sticky-top {
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.navbar.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: var(--shadow-lg);
+}

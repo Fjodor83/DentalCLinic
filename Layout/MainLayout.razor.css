@@ -1,3 +1,8 @@
+/* ========================================
+   MAIN LAYOUT - OCEANSIDE DENTAL CENTRE
+   Modern Layout with Enhanced Visual Effects
+   ======================================== */
+
 .page {
     position: relative;
     display: flex;
@@ -5,85 +10,340 @@
     min-height: 100vh;
 }
 
+/* ========================================
+   HEADER
+   ======================================== */
+
 .site-header {
     background-color: var(--color-white);
     border-bottom: 5px solid var(--color-ocean-blue);
-    box-shadow: 0 2px 8px rgba(0, 119, 190, 0.1);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: var(--z-sticky);
+    transition: all var(--transition-base);
 }
+
+.site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            var(--color-ocean-blue) 0%,
+            var(--color-coastal-light) 50%,
+            var(--color-ocean-blue) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
 
 .main-content {
     flex: 1;
+    position: relative;
 }
+
+/* ========================================
+   FOOTER
+   ======================================== */
 
 .site-footer {
     background-color: var(--color-primary-text);
     color: var(--color-white);
     position: relative;
+    padding: 3rem 0 2rem;
 }
 
-    /* Effetto onda decorativo opzionale per il footer */
-    .site-footer::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--color-ocean-blue) 0%, var(--color-coastal-light) 50%, var(--color-ocean-blue) 100%);
-    }
+/* Effetto onda decorativo per il footer */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+            var(--color-ocean-blue) 0%,
+            var(--color-coastal-light) 50%,
+            var(--color-ocean-blue) 100%);
+}
 
-    .site-footer a {
-        color: var(--color-white);
-        opacity: 0.85;
-        transition: opacity 0.2s ease, color 0.2s ease;
-    }
+/* Typography nel footer */
+.site-footer h5 {
+    color: var(--color-coastal-light);
+    border-bottom: 2px solid var(--color-ocean-blue);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-weight: 600;
+    position: relative;
+}
 
-        .site-footer a:hover {
-            opacity: 1;
-            color: var(--color-coastal-light);
-            text-decoration: underline;
-        }
+.site-footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-coastal-light);
+    transition: width var(--transition-base);
+}
+
+.site-footer h5:hover::after {
+    width: 100%;
+}
+
+.site-footer h6 {
+    color: var(--color-coastal-light);
+    opacity: 0.9;
+}
+
+/* Links nel footer */
+.site-footer a {
+    color: var(--color-white);
+    opacity: 0.85;
+    transition: all var(--transition-fast);
+    position: relative;
+    display: inline-block;
+}
+
+.site-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-coastal-light);
+    transition: width var(--transition-base);
+}
+
+.site-footer a:hover {
+    opacity: 1;
+    color: var(--color-coastal-light);
+    transform: translateX(3px);
+}
+
+.site-footer a:hover::after {
+    width: 100%;
+}
+
+/* Liste nel footer */
+.site-footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 0.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.site-footer ul li:hover {
+    transform: translateX(5px);
+}
+
+/* ========================================
+   SOCIAL ICONS
+   ======================================== */
+
+.site-footer .social-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.site-footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(129, 212, 250, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--color-ocean-blue);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    z-index: 0;
+}
+
+.site-footer .social-icons a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.site-footer .social-icons a:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.site-footer .social-icons a i,
+.site-footer .social-icons a svg {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   PAYMENT METHODS
+   ======================================== */
+
+.site-footer .badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    background-color: #28a745;
+}
+
+.site-footer .badge:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-sm);
+}
+
+.site-footer img {
+    transition: all var(--transition-base);
+    filter: brightness(1) contrast(1);
+}
+
+.site-footer img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* ========================================
+   FOOTER BOTTOM (Copyright)
+   ======================================== */
+
+.site-footer .border-top {
+    border-color: rgba(129, 212, 250, 0.2) !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 2rem 0 1.5rem;
+    }
 
     .site-footer h5 {
-        color: var(--color-coastal-light);
-        border-bottom: 2px solid var(--color-ocean-blue);
-        padding-bottom: 0.5rem;
-        margin-bottom: 1rem;
-        display: inline-block;
-        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
     }
 
-    /* Stile aggiuntivo per icone social se presenti */
-    .site-footer .social-icons a {
-        display: inline-flex;
-        align-items: center;
+    .site-footer .col-md-4 {
+        margin-bottom: 2rem;
+    }
+
+    .site-footer .social-icons {
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgba(129, 212, 250, 0.1);
-        margin: 0 0.25rem;
-        transition: all 0.3s ease;
     }
 
-        .site-footer .social-icons a:hover {
-            background-color: var(--color-ocean-blue);
-            transform: translateY(-3px);
-            text-decoration: none;
-        }
+    .site-footer ul li {
+        text-align: center;
+    }
+}
 
-    /* Badge "CASH" e loghi carte di pagamento */
-    .site-footer .badge {
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Fade in animation per il contenuto */
+.main-content>* {
+    animation: contentFadeIn 0.5s ease-out;
+}
+
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .site-footer img {
-        transition: transform 0.2s ease, filter 0.2s ease;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus states migliorati */
+.site-footer a:focus-visible {
+    outline: 2px solid var(--color-coastal-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header::after,
+    .site-footer a,
+    .site-footer img,
+    .site-footer .social-icons a,
+    .main-content>* {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* ========================================
+   DARK MODE SUPPORT (Future Enhancement)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* Placeholder per futuro supporto dark mode */
+    /* .site-header { ... } */
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .site-header,
+    .site-footer {
+        box-shadow: none;
+        border: none;
     }
 
-        .site-footer img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
+    .site-header::after,
+    .site-footer::before {
+        display: none;
+    }
+}

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white w-100 py-2">
     <div class="container-fluid px-0">
         <a class="navbar-brand py-0 d-flex align-items-center" href="">
-            <img src="images/logo.jpg" alt="Oceanside Dental Centre" height="100" class="d-inline-block align-text-top" />
+            <img src="images/Logo.png" alt="Oceanside Dental Centre" height="100" class="d-inline-block align-text-top" />
         </a>
         <button class="navbar-toggler border-0" type="button" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon fs-2"></span>
@@ -18,32 +18,8 @@
                  <li class="nav-item">
                     <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="biografy">Biografy</NavLink>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fs-5 fw-bold mx-2 px-3 py-2 @(showServicesDropdown ? "show" : "")" 
-                       href="#" 
-                       @onclick="ToggleServicesDropdown" 
-                       @onclick:preventDefault>
-                        Services
-                    </a>
-                    <ul class="dropdown-menu @(showServicesDropdown ? "show" : "")" style="min-width: 250px;">
-                        <li><NavLink class="dropdown-item" href="service/bridges" @onclick="CloseDropdown">Bridges</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/composite-restorations" @onclick="CloseDropdown">Composite Restorations (fillings)</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/cosmetic-veneers" @onclick="CloseDropdown">Cosmetic Veneers</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/crowns" @onclick="CloseDropdown">Crowns</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/endo-therapy" @onclick="CloseDropdown">Endo (Root Canal) Therapy</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/extractions" @onclick="CloseDropdown">Extractions</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/hygiene" @onclick="CloseDropdown">Hygiene</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/implant-restoration" @onclick="CloseDropdown">Dental Implant Restoration</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/laser-therapy" @onclick="CloseDropdown">Laser Therapy</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/mini-implants" @onclick="CloseDropdown">Mini Dental Implants</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/sealants" @onclick="CloseDropdown">Pit and Fissure Sealants</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/tmj-pain" @onclick="CloseDropdown">(TMJ) Jaw and Headache Pain</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/whitening" @onclick="CloseDropdown">Whitening</NavLink></li>
-                         <li><hr class="dropdown-divider"></li>
-                        <li><NavLink class="dropdown-item" href="service/children-seniors" @onclick="CloseDropdown">Children & Seniors</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/child-first-visit" @onclick="CloseDropdown">Child’s first visit</NavLink></li>
-                        <li><NavLink class="dropdown-item" href="service/healthy-kids" @onclick="CloseDropdown">Healthy Kids Program</NavLink></li>
-                    </ul>
+                <li class="nav-item">
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="services">Services</NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="contact">Contact Us</NavLink>
@@ -58,23 +34,11 @@
 
 @code {
     private bool collapseNavMenu = true;
-    private bool showServicesDropdown = false;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
-    }
-
-    private void ToggleServicesDropdown()
-    {
-        showServicesDropdown = !showServicesDropdown;
-    }
-
-    private void CloseDropdown()
-    {
-        showServicesDropdown = false;
-        collapseNavMenu = true; // Close the mobile menu too if open
     }
 }

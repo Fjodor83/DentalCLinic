@@ -1,70 +1,223 @@
 :root {
+    /* ========================================
+       OCEANSIDE DENTAL - DESIGN SYSTEM
+       ======================================== */
+
     /* Palette Oceanside Dental - Tema Costiero Pacifico */
     --color-ocean-blue: #0077BE;
     --color-ocean-dark: #005A8F;
+    --color-ocean-light: #1E90FF;
     --color-coastal-light: #81D4FA;
     --color-aqua-accent: #00ACC1;
     --color-sand-beige: #F5F5F0;
+
     /* Colori di testo */
     --color-primary-text: #1E3A5F;
     --color-secondary-text: #546E7A;
+    --color-text-muted: #78909C;
+
     /* Colori di sfondo */
     --color-bg-light: #F9FCFF;
     --color-white: #FFFFFF;
-    /* Font */
-    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    /* Font Families */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
+
+    /* Shadows - Progressive Elevation */
+    --shadow-sm: 0 2px 8px rgba(0, 119, 190, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 119, 190, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 119, 190, 0.16);
+    --shadow-xl: 0 16px 48px rgba(0, 119, 190, 0.2);
+    --shadow-glow: 0 0 20px rgba(0, 119, 190, 0.15);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal: 1040;
+    --z-popover: 1050;
+    --z-tooltip: 1060;
 }
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 html,
 body {
     font-family: var(--font-primary);
     color: var(--color-primary-text);
     background-color: var(--color-bg-light);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-a,
-.btn-link {
-    color: var(--color-ocean-blue);
-    text-decoration: none;
-}
-
-    a:hover {
-        color: var(--color-ocean-dark);
-        text-decoration: underline;
-    }
-
+/* Typography */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-heading);
     color: var(--color-primary-text);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    outline: none;
+    /* Previene outline di focus su elementi non interattivi */
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Links */
+a {
+    color: var(--color-ocean-blue);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-ocean-dark);
+}
+
+a:focus-visible {
+    outline: 3px solid var(--color-coastal-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Navbar Links Override - Alta specificità per sovrascrivere Bootstrap */
+.navbar-light .navbar-nav .nav-link,
+.navbar-nav .nav-link {
+    color: var(--color-primary-text);
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: var(--color-ocean-blue);
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-nav .nav-link.active {
+    color: var(--color-ocean-blue);
+}
+
+/* Dropdown toggle */
+.navbar-nav .dropdown-toggle {
+    color: var(--color-primary-text);
+}
+
+.navbar-nav .dropdown-toggle:hover,
+.navbar-nav .dropdown-toggle:focus {
+    color: var(--color-ocean-blue);
+}
+
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {
     color: #fff;
     background-color: var(--color-ocean-blue);
     border-color: var(--color-ocean-dark);
+    box-shadow: var(--shadow-sm);
 }
 
-    .btn-primary:hover {
-        background-color: var(--color-ocean-dark);
-        border-color: var(--color-ocean-dark);
-    }
+.btn-primary:hover {
+    background-color: var(--color-ocean-dark);
+    border-color: var(--color-ocean-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
 
 .btn-primary-custom {
     color: #fff;
     background-color: var(--color-ocean-blue);
     border-color: var(--color-ocean-dark);
+    box-shadow: var(--shadow-sm);
 }
 
-    .btn-primary-custom:hover {
-        background-color: var(--color-ocean-dark);
-        border-color: var(--color-ocean-dark);
-        color: #fff;
-    }
+.btn-primary-custom:hover {
+    background-color: var(--color-ocean-dark);
+    border-color: var(--color-ocean-dark);
+    color: #fff;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
 
+.btn-outline-ocean {
+    color: var(--color-ocean-blue);
+    border-color: var(--color-ocean-blue);
+    border-width: 2px;
+    background-color: transparent;
+}
+
+.btn-outline-ocean:hover {
+    background-color: var(--color-ocean-blue);
+    color: white;
+    border-color: var(--color-ocean-blue);
+    box-shadow: var(--shadow-md);
+}
+
+/* Focus States */
 .btn:focus,
 .btn:active:focus,
 .btn-link.nav-link:focus,
@@ -73,105 +226,124 @@ h6 {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--color-coastal-light);
 }
 
-.content {
-    padding-top: 1.1rem;
+/* ========================================
+   FORMS
+   ======================================== */
+
+.form-control {
+    border-radius: var(--radius-md);
+    border: 2px solid #e0e7ef;
+    transition: all var(--transition-base);
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+.form-control:focus {
+    border-color: var(--color-ocean-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 119, 190, 0.15);
 }
 
-.invalid {
-    outline: 1px solid red;
-}
-
-.validation-message {
-    color: red;
-}
-
-#blazor-error-ui {
-    color-scheme: light only;
-    background: lightyellow;
-    bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    display: none;
-    left: 0;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
-
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
-
-.blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
-    padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
-}
-
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
-
-.loading-progress {
-    position: absolute;
-    display: block;
-    width: 8rem;
-    height: 8rem;
-    inset: 20vh 0 auto 0;
-    margin: 0 auto 0 auto;
-}
-
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
-    }
-
-        .loading-progress circle:last-child {
-            stroke: var(--color-ocean-blue);
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
-        }
-
-.loading-progress-text {
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
-}
-
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
-    }
-
-code {
-    color: #c02d76;
-}
-
-.form-floating > .form-control-plaintext::placeholder,
-.form-floating > .form-control::placeholder {
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder {
     color: var(--bs-secondary-color);
     text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder,
-.form-floating > .form-control:focus::placeholder {
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder {
     text-align: start;
 }
 
+.valid.modified:not([type=checkbox]) {
+    outline: 2px solid #26b050;
+    outline-offset: 2px;
+}
+
+.invalid {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+.validation-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+
+.content {
+    padding-top: 1.1rem;
+}
+
+/* ========================================
+   ACCORDION
+   ======================================== */
+
+.accordion-button {
+    font-weight: 600;
+    transition: all var(--transition-base);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--color-ocean-blue) !important;
+    color: white !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 119, 190, 0.25);
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230077BE'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Hover Effects */
+.hover-lift {
+    transition: all var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Background Colors */
+.bg-primary-custom {
+    background-color: var(--color-primary-text) !important;
+}
+
+.bg-coastal {
+    background-color: var(--color-coastal-light);
+}
+
+.bg-sand {
+    background-color: var(--color-sand-beige);
+}
+
+.bg-ocean-gradient {
+    background: linear-gradient(135deg, var(--color-ocean-blue) 0%, var(--color-coastal-light) 100%);
+}
+
+/* Text Colors */
+.text-aqua {
+    color: var(--color-aqua-accent);
+}
+
+/* Map Components */
 .map-container {
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     overflow: hidden;
+    box-shadow: var(--shadow-md);
 }
 
 .map-iframe {
@@ -190,81 +362,177 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px rgba(0, 119, 190, 0.3);
+    box-shadow: var(--shadow-lg);
     text-decoration: none;
     z-index: 20;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: all var(--transition-base);
 }
 
-    .fab-directions i {
-        font-size: 1.4rem;
+.fab-directions i {
+    font-size: 1.4rem;
+}
+
+.fab-directions:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+    background-color: var(--color-ocean-dark);
+    color: #fff;
+}
+
+/* ========================================
+   ERROR HANDLING
+   ======================================== */
+
+#blazor-error-ui {
+    color-scheme: light only;
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: var(--z-tooltip);
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+.blazor-error-boundary {
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
+    padding: 1rem 1rem 1rem 3.7rem;
+    color: white;
+}
+
+.blazor-error-boundary::after {
+    content: "An error has occurred.";
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+.loading-progress {
+    position: absolute;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    inset: 20vh 0 auto 0;
+    margin: 0 auto 0 auto;
+}
+
+.loading-progress circle {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.loading-progress circle:last-child {
+    stroke: var(--color-ocean-blue);
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+.loading-progress-text:after {
+    content: var(--blazor-load-percentage-text, "Loading");
+}
+
+/* ========================================
+   CODE BLOCKS
+   ======================================== */
+
+code {
+    color: #c02d76;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    background-color: rgba(0, 119, 190, 0.05);
+    border-radius: 4px;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-2xl: 2.5rem;
     }
 
-    .fab-directions:hover {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
         transform: scale(1.05);
-        box-shadow: 0 8px 22px rgba(0, 119, 190, 0.4);
-        background-color: var(--color-ocean-dark);
-        color: #fff;
     }
-
-/* Accordion styles */
-.accordion-button:not(.collapsed) {
-    background-color: var(--color-ocean-blue) !important;
-    color: white !important;
 }
 
-.accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 119, 190, 0.25);
+/* Animation utility classes */
+.animate-fade-in {
+    animation: fadeIn var(--transition-slow) ease-out;
 }
 
-.accordion-button::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230077BE'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+.animate-slide-in {
+    animation: slideInFromLeft var(--transition-slow) ease-out;
 }
 
-.accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
-/* Service cards hover */
-.hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-    .hover-lift:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 119, 190, 0.15) !important;
-    }
-
-/* Button outline ocean */
-.btn-outline-sage {
-    color: var(--color-ocean-blue);
-    border-color: var(--color-ocean-blue);
-}
-
-    .btn-outline-sage:hover {
-        background-color: var(--color-ocean-blue);
-        color: white;
-    }
-
-/* Background primary custom */
-.bg-primary-custom {
-    background-color: var(--color-primary-text) !important;
-}
-
-/* Classe aggiuntiva per accenti acqua */
-.text-aqua {
-    color: var(--color-aqua-accent);
-}
-
-.bg-coastal {
-    background-color: var(--color-coastal-light);
-}
-
-.bg-sand {
-    background-color: var(--color-sand-beige);
-}
-
-/* Gradient ocean (opzionale per hero sections) */
-.bg-ocean-gradient {
-    background: linear-gradient(135deg, var(--color-ocean-blue) 0%, var(--color-coastal-light) 100%);
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -1,26 +1,34 @@
 ﻿/* ========================================
    ELEMENTI DECORATIVI COSTIERI
    Per Oceanside Dental Centre
+   Versione Ottimizzata con effetti moderni
    ======================================== */
 
-/* === WAVE DIVIDER (Onda SVG per separare sezioni) === */
+/* ========================================
+   WAVE DIVIDERS
+   ======================================== */
+
 .wave-divider {
     position: relative;
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
-    .wave-divider svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 60px;
-    }
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+    transform: translateZ(0);
+}
 
-    .wave-divider .shape-fill {
-        fill: var(--color-ocean-blue);
-    }
+.wave-divider .shape-fill {
+    fill: var(--color-ocean-blue);
+    transition: fill var(--transition-base);
+}
 
 /* Variante wave inversa */
 .wave-divider-bottom {
@@ -37,75 +45,121 @@
     line-height: 0;
 }
 
-    .wave-footer svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 60px;
-    }
+.wave-footer svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
 
-    .wave-footer .shape-fill {
-        fill: var(--color-primary-text);
-    }
+.wave-footer .shape-fill {
+    fill: var(--color-primary-text);
+}
 
+/* ========================================
+   HERO SECTION
+   ======================================== */
 
-/* === HERO SECTION CON GRADIENT OCEAN === */
 .hero-ocean {
-    background: linear-gradient(135deg, var(--color-ocean-blue) 0%, var(--color-coastal-light) 50%, var(--color-ocean-blue) 100%);
+    background: linear-gradient(135deg,
+            var(--color-ocean-blue) 0%,
+            var(--color-coastal-light) 50%,
+            var(--color-ocean-blue) 100%);
     color: white;
     padding: 4rem 0;
     position: relative;
     overflow: hidden;
 }
 
-    .hero-ocean::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    .hero-ocean h1,
-    .hero-ocean h2,
-    .hero-ocean p {
-        position: relative;
-        z-index: 1;
-        color: white;
-    }
-
-
-/* === CARD CON EFFETTO ACQUA === */
-.card-ocean {
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0, 119, 190, 0.1);
+.hero-ocean::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    animation: subtle-shimmer 10s ease-in-out infinite;
 }
 
-    .card-ocean:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 30px rgba(0, 119, 190, 0.2);
-    }
+.hero-ocean h1,
+.hero-ocean h2,
+.hero-ocean p {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
 
-    .card-ocean .card-header {
-        background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-aqua-accent));
-        color: white;
-        border: none;
-        padding: 1.5rem;
-    }
+/* ========================================
+   CARD CON EFFETTO GLASSMORPHISM
+   ======================================== */
 
-    .card-ocean .card-body {
-        padding: 1.5rem;
-    }
+.card-ocean {
+    border: none;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    background: white;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
 
+.card-ocean::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
 
-/* === SEZIONE CON SFONDO COASTAL === */
+.card-ocean:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-ocean:hover::before {
+    opacity: 1;
+}
+
+.card-ocean .card-header {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-aqua-accent));
+    color: white;
+    border: none;
+    padding: 1.5rem;
+    font-weight: 600;
+}
+
+.card-ocean .card-body {
+    padding: 1.5rem;
+}
+
+/* Card con effetto glassmorphism */
+.card-glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.card-glass:hover {
+    background: rgba(255, 255, 255, 0.98);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ========================================
+   SEZIONI CON SFONDO
+   ======================================== */
+
 .section-coastal {
     background-color: var(--color-bg-light);
     background-image: linear-gradient(135deg, transparent 0%, rgba(129, 212, 250, 0.05) 100%);
@@ -117,58 +171,106 @@
     position: relative;
 }
 
+/* ========================================
+   PULSANTI DECORATIVI
+   ======================================== */
 
-/* === PULSANTI DECORATIVI === */
 .btn-ocean {
     background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-aqua-accent));
     border: none;
     color: white;
     padding: 0.75rem 2rem;
-    border-radius: 50px;
+    border-radius: var(--radius-full);
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 119, 190, 0.3);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
 }
 
-    .btn-ocean:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 119, 190, 0.4);
-        color: white;
-    }
+.btn-ocean::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
 
-    .btn-ocean:active {
-        transform: translateY(0);
-    }
+.btn-ocean:hover::before {
+    width: 300px;
+    height: 300px;
+}
 
+.btn-ocean:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
 
-/* === BADGE DECORATIVI === */
+.btn-ocean:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   BADGE DECORATIVI
+   ======================================== */
+
 .badge-ocean {
     background-color: var(--color-ocean-blue);
     color: white;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--radius-full);
     font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.badge-ocean:hover {
+    background-color: var(--color-ocean-dark);
+    transform: scale(1.05);
 }
 
 .badge-coastal {
     background-color: var(--color-coastal-light);
     color: var(--color-primary-text);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--radius-full);
     font-weight: 500;
 }
 
+/* ========================================
+   LINEE DECORATIVE
+   ======================================== */
 
-/* === LINEA DECORATIVA ONDULATA === */
 .divider-wave-line {
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, transparent 0%, var(--color-ocean-blue) 20%, var(--color-coastal-light) 50%, var(--color-ocean-blue) 80%, transparent 100%);
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--color-ocean-blue) 20%,
+            var(--color-coastal-light) 50%,
+            var(--color-ocean-blue) 80%,
+            transparent 100%);
     margin: 2rem 0;
 }
 
+.section-separator {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    margin: 2rem auto;
+    border-radius: var(--radius-sm);
+    animation: pulse-separator 2s ease-in-out infinite;
+}
 
-/* === ICONE CON SFONDO OCEAN === */
+/* ========================================
+   ICONE CON SFONDO OCEAN
+   ======================================== */
+
 .icon-ocean {
     width: 60px;
     height: 60px;
@@ -180,11 +282,19 @@
     color: white;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 119, 190, 0.2);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
 }
 
+.icon-ocean:hover {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
 
-/* === TESTIMONIANZE/QUOTE === */
+/* ========================================
+   TESTIMONIANZE/QUOTE
+   ======================================== */
+
 .quote-ocean {
     border-left: 4px solid var(--color-ocean-blue);
     padding-left: 1.5rem;
@@ -194,20 +304,25 @@
     position: relative;
 }
 
-    .quote-ocean::before {
-        content: '"';
-        font-size: 3rem;
-        color: var(--color-coastal-light);
-        position: absolute;
-        left: -10px;
-        top: -20px;
-        font-family: Georgia, serif;
-    }
+.quote-ocean::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--color-coastal-light);
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    font-family: Georgia, serif;
+    opacity: 0.5;
+}
 
+/* ========================================
+   ANIMAZIONI
+   ======================================== */
 
-/* === ANIMAZIONE SUBTLE WAVE (opzionale) === */
 @keyframes subtle-wave {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -216,86 +331,209 @@
     }
 }
 
+@keyframes subtle-shimmer {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse-separator {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scaleX(1.1);
+    }
+}
+
 .animate-wave {
     animation: subtle-wave 3s ease-in-out infinite;
 }
 
+/* ========================================
+   NAVBAR ENHANCEMENT
+   ======================================== */
 
-/* === SECTION SEPARATOR === */
-.section-separator {
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
-    margin: 2rem auto;
-    border-radius: 2px;
-}
-
-
-/* === OVERLAY SCURO PER IMMAGINI === */
-.image-overlay-ocean {
-    position: relative;
-}
-
-    .image-overlay-ocean::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(0, 119, 190, 0.7) 0%, rgba(0, 172, 193, 0.5) 100%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .image-overlay-ocean:hover::after {
-        opacity: 1;
-    }
-
-
-/* === NAVBAR ENHANCEMENT === */
 .nav-link {
     position: relative;
-    transition: color 0.3s ease;
+    transition: color var(--transition-base);
+    font-weight: 500;
 }
 
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
-        transition: width 0.3s ease;
-    }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    transition: width var(--transition-base);
+    border-radius: var(--radius-full);
+}
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 80%;
-    }
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
 
+/* ========================================
+   SERVIZI GRID CON HOVER EFFECT
+   ======================================== */
 
-/* === SERVIZI GRID CON HOVER EFFECT === */
 .service-grid-item {
     background: white;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
-    .service-grid-item:hover {
-        border-color: var(--color-coastal-light);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 119, 190, 0.15);
+.service-grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-coastal-light));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 0;
+}
+
+.service-grid-item:hover::before {
+    opacity: 0.03;
+}
+
+.service-grid-item:hover {
+    border-color: var(--color-coastal-light);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-grid-item>* {
+    position: relative;
+    z-index: 1;
+}
+
+.service-grid-item i,
+.service-grid-item .icon {
+    color: var(--color-ocean-blue);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: all var(--transition-base);
+}
+
+.service-grid-item:hover i,
+.service-grid-item:hover .icon {
+    transform: scale(1.1);
+    color: var(--color-ocean-dark);
+}
+
+/* ========================================
+   OVERLAY SCURO PER IMMAGINI
+   ======================================== */
+
+.image-overlay-ocean {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.image-overlay-ocean::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            rgba(0, 119, 190, 0.7) 0%,
+            rgba(0, 172, 193, 0.5) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.image-overlay-ocean:hover::after {
+    opacity: 1;
+}
+
+.image-overlay-ocean img {
+    transition: transform var(--transition-slow);
+}
+
+.image-overlay-ocean:hover img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 992px) {
+
+    .wave-divider svg,
+    .wave-footer svg {
+        height: 40px;
     }
 
-    .service-grid-item i,
-    .service-grid-item .icon {
-        color: var(--color-ocean-blue);
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+    .service-grid-item {
+        padding: 1.5rem;
     }
+
+    .icon-ocean {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-ocean {
+        padding: 3rem 0;
+    }
+
+    .btn-ocean {
+        padding: 0.625rem 1.5rem;
+    }
+
+    .quote-ocean::before {
+        font-size: 2rem;
+        top: -10px;
+    }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Utilizzo di will-change per animazioni frequenti */
+.hover-lift,
+.service-grid-item,
+.card-ocean,
+.btn-ocean {
+    will-change: transform;
+}
+
+/* GPU acceleration per transizioni fluide */
+.nav-link::after,
+.service-grid-item::before,
+.card-ocean::before {
+    will-change: width, opacity;
+}
