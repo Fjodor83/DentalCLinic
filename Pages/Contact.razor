@@ -173,7 +173,8 @@
     // TODO: Replace these with your actual EmailJS credentials
     private const string EMAILJS_PUBLIC_KEY = "mXFjDQyR3cPRKqaG4";
     private const string EMAILJS_SERVICE_ID = "service_rhzwm29";
-    private const string EMAILJS_TEMPLATE_ID = "template_mk7gnho";
+    private const string EMAILJS_TEMPLATE_ID = "template_mk7gnho"; 
+    private const string EMAILJS_PATIENT_TEMPLATE_ID = "template_0tqdbe5"; 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -204,19 +205,31 @@
             {
                 name = contactForm.Name,
                 email = contactForm.Email,
-                phone = contactForm.Phone,
+                phone = contactForm.Phone ?? "",
+                subject = "Contact Request", 
                 message = contactForm.Message
             };
 
-            // Send email via EmailJS
-            await JS.InvokeVoidAsync("emailService.sendEmail", 
-                EMAILJS_SERVICE_ID, 
-                EMAILJS_TEMPLATE_ID, 
-                formData);
+            // Send dual emails via EmailJS (admin + patient auto-reply)
+            var result = await JS.InvokeAsync<EmailResult>(
+                "emailService.sendContactForm",
+                formData,
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                EMAILJS_PATIENT_TEMPLATE_ID
+            );
 
-            // Success!
-            showSuccessMessage = true;
-            contactForm = new ContactFormModel(); // Reset form
+            if (result.Success)
+            {
+                // Success!
+                showSuccessMessage = true;
+                contactForm = new ContactFormModel(); // Reset form
+            }
+            else
+            {
+                showErrorMessage = true;
+                errorMessage = result.Message;
+            }
         }
         catch (Exception ex)
         {
@@ -229,5 +242,12 @@
         {
             isSubmitting = false;
         }
+    }
+
+    // EmailResult class per ricevere risposta da JavaScript
+    public class EmailResult
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = "";
     }
 }
