@@ -10,22 +10,22 @@
         <div class="@NavMenuCssClass navbar-collapse justify-content-end">
             <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="" Match="NavLinkMatch.All">Home</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="" Match="NavLinkMatch.All" @onclick="CloseNavMenu">Home</NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="clinic">Our Clinic</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="clinic" @onclick="CloseNavMenu">Our Clinic</NavLink>
                 </li>
                  <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="biografy">Biografy</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="biografy" @onclick="CloseNavMenu">Biografy</NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="services">Services</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="services" @onclick="CloseNavMenu">Services</NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="contact">Contact Us</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="contact" @onclick="CloseNavMenu">Contact Us</NavLink>
                 </li>
                  <li class="nav-item">
-                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="faq">FAQ</NavLink>
+                    <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="faq" @onclick="CloseNavMenu">FAQ</NavLink>
                 </li>
             </ul>
         </div>
@@ -40,5 +40,10 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void CloseNavMenu()
+    {
+        collapseNavMenu = true;
     }
 }
