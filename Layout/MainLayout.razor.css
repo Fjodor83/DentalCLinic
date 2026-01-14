@@ -7,8 +7,8 @@
 
 .site-header {
     background-color: var(--color-white);
-    border-bottom: 5px solid var(--color-sage-green);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-bottom: 5px solid var(--color-ocean-blue);
+    box-shadow: 0 2px 8px rgba(0, 119, 190, 0.1);
 }
 
 .main-content {
@@ -18,22 +18,72 @@
 .site-footer {
     background-color: var(--color-primary-text);
     color: var(--color-white);
+    position: relative;
 }
 
-.site-footer a {
-    color: var(--color-white);
-    opacity: 0.8;
-}
+    /* Effetto onda decorativo opzionale per il footer */
+    .site-footer::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-ocean-blue) 0%, var(--color-coastal-light) 50%, var(--color-ocean-blue) 100%);
+    }
 
-.site-footer a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
+    .site-footer a {
+        color: var(--color-white);
+        opacity: 0.85;
+        transition: opacity 0.2s ease, color 0.2s ease;
+    }
 
-.site-footer h5 {
-    color: var(--color-sage-green);
-    border-bottom: 2px solid var(--color-sage-green);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-}
+        .site-footer a:hover {
+            opacity: 1;
+            color: var(--color-coastal-light);
+            text-decoration: underline;
+        }
+
+    .site-footer h5 {
+        color: var(--color-coastal-light);
+        border-bottom: 2px solid var(--color-ocean-blue);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+        font-weight: 600;
+    }
+
+    /* Stile aggiuntivo per icone social se presenti */
+    .site-footer .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(129, 212, 250, 0.1);
+        margin: 0 0.25rem;
+        transition: all 0.3s ease;
+    }
+
+        .site-footer .social-icons a:hover {
+            background-color: var(--color-ocean-blue);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+    /* Badge "CASH" e loghi carte di pagamento */
+    .site-footer .badge {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .site-footer img {
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+        .site-footer img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
