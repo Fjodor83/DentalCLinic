@@ -8,7 +8,14 @@
    WAVE DIVIDERS
    ======================================== */
 
+/* Clinical Calm: the decorative coastal waves are retired in favour of
+   calm, airy section transitions. Hidden (not deleted) so existing markup
+   keeps validating and the change is fully reversible. */
 .wave-divider {
+    display: none;
+}
+
+.wave-divider-legacy {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -61,36 +68,28 @@
    ======================================== */
 
 .hero-ocean {
-    background: linear-gradient(135deg,
-            var(--color-ocean-blue) 0%,
-            var(--color-coastal-light) 50%,
-            var(--color-ocean-blue) 100%);
-    color: white;
-    padding: 4rem 0;
+    background-color: var(--hero-bg);
+    background-image:
+        radial-gradient(120% 120% at 85% 0%, rgba(43, 125, 212, 0.45) 0%, transparent 55%),
+        radial-gradient(100% 100% at 0% 100%, rgba(10, 58, 107, 0.6) 0%, transparent 60%);
+    color: var(--hero-text);
+    padding: clamp(4rem, 9vw, 7rem) 0;
     position: relative;
     overflow: hidden;
 }
 
-.hero-ocean::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    animation: subtle-shimmer 10s ease-in-out infinite;
-}
-
 .hero-ocean h1,
 .hero-ocean h2,
+.hero-ocean h3,
 .hero-ocean p {
     position: relative;
     z-index: 1;
-    color: white;
+    color: var(--hero-text);
+}
+
+.hero-ocean .lead,
+.hero-ocean p {
+    color: rgba(255, 255, 255, 0.82);
 }
 
 /* ========================================
@@ -98,12 +97,12 @@
    ======================================== */
 
 .card-ocean {
-    border: none;
+    border: 1px solid var(--card-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     background: var(--card-surface);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     position: relative;
 }
 
@@ -113,15 +112,16 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    height: 3px;
+    background: var(--color-ocean-blue);
     opacity: 0;
     transition: opacity var(--transition-base);
 }
 
 .card-ocean:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-coastal-light);
 }
 
 .card-ocean:hover::before {
@@ -188,13 +188,12 @@
    ======================================== */
 
 .section-coastal {
-    background-color: var(--color-bg-light);
-    background-image: linear-gradient(135deg, transparent 0%, rgba(129, 212, 250, 0.05) 100%);
+    background-color: var(--section-tint);
     position: relative;
 }
 
 .section-sand {
-    background-color: var(--color-sand-beige);
+    background-color: var(--section-muted);
     position: relative;
 }
 
@@ -203,44 +202,56 @@
    ======================================== */
 
 .btn-ocean {
-    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-aqua-accent));
-    border: none;
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-md);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-ocean::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn-ocean:hover::before {
-    width: 300px;
-    height: 300px;
+    background: var(--btn-primary-bg);
+    border: 1px solid transparent;
+    color: var(--btn-primary-text);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-ocean:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    color: white;
+    background: var(--btn-primary-bg-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: var(--btn-primary-text);
 }
 
 .btn-ocean:active {
     transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-ocean:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-glow);
+}
+
+/* On dark hero bands, the primary CTA inverts to white for contrast */
+.hero-ocean .btn-ocean,
+.hero-ocean .btn-light {
+    background: var(--color-white);
+    color: var(--color-ocean-deep);
+}
+
+.hero-ocean .btn-ocean:hover,
+.hero-ocean .btn-light:hover {
+    background: var(--color-bg-tint);
+    color: var(--color-ocean-deep);
+}
+
+.hero-ocean .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--color-white);
+}
+
+.hero-ocean .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--color-white);
+    color: var(--color-white);
 }
 
 /* ========================================
@@ -248,17 +259,17 @@
    ======================================== */
 
 .badge-ocean {
-    background-color: var(--color-ocean-blue);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
+    background-color: var(--color-bg-tint);
+    color: var(--color-ocean-dark);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
     font-weight: 500;
-    transition: all var(--transition-fast);
+    letter-spacing: 0.02em;
+    transition: background-color var(--transition-fast);
 }
 
 .badge-ocean:hover {
-    background-color: var(--color-ocean-dark);
-    transform: scale(1.05);
+    background-color: var(--primitive-blue-100);
 }
 
 .badge-coastal {
@@ -286,12 +297,11 @@
 }
 
 .section-separator {
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
-    margin: 2rem auto;
-    border-radius: var(--radius-sm);
-    animation: pulse-separator 2s ease-in-out infinite;
+    width: 48px;
+    height: 3px;
+    background: var(--color-ocean-blue);
+    margin: 0 auto 1.5rem;
+    border-radius: var(--radius-full);
 }
 
 /* ========================================
@@ -299,23 +309,22 @@
    ======================================== */
 
 .icon-ocean {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-coastal-light));
-    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    background: var(--medallion-bg);
+    border-radius: var(--radius-lg);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--medallion-fg);
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
+    margin-bottom: 1.25rem;
+    transition: transform var(--transition-base), background-color var(--transition-base);
 }
 
 .icon-ocean:hover {
-    transform: rotate(5deg) scale(1.1);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    background: var(--primitive-blue-100);
 }
 
 /* Compact variant used in testimonial author rows */
@@ -330,23 +339,24 @@
    ======================================== */
 
 .quote-ocean {
-    border-left: 4px solid var(--color-ocean-blue);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: var(--color-secondary-text);
+    padding-left: 0;
+    margin: 0 0 1.5rem;
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-primary-text);
     position: relative;
 }
 
 .quote-ocean::before {
-    content: '"';
+    content: '\201C';
+    display: block;
     font-size: 3rem;
+    line-height: 0.6;
     color: var(--color-coastal-light);
-    position: absolute;
-    left: -10px;
-    top: -20px;
-    font-family: Georgia, serif;
-    opacity: 0.5;
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
 }
 
 /* ========================================
@@ -391,8 +401,19 @@
     }
 }
 
+/* Hero eyebrow — small uppercase kicker above the H1 */
+.hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-coastal-light);
+    margin: 0;
+}
+
+/* .animate-wave retired in Clinical Calm (no decorative motion) */
 .animate-wave {
-    animation: subtle-wave 3s ease-in-out infinite;
+    animation: none;
 }
 
 /* ========================================
@@ -412,8 +433,8 @@
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-ocean-blue), var(--color-coastal-light));
+    height: 2px;
+    background: var(--color-ocean-blue);
     transition: width var(--transition-base);
     border-radius: var(--radius-full);
 }
@@ -428,44 +449,22 @@
    ======================================== */
 
 .service-grid-item {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fcff 100%);
-    /* Sfondo con leggero gradiente */
+    background: var(--card-surface);
     border-radius: var(--radius-lg);
     padding: 2rem;
     text-align: center;
-    transition: all var(--transition-base);
-    border: 2px solid rgba(0, 172, 193, 0.2);
-    /* Bordo celeste leggero sempre visibile */
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    border: 1px solid var(--card-border);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 119, 190, 0.08);
-    /* Ombra iniziale leggera */
-}
-
-.service-grid-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-coastal-light));
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    z-index: 0;
-}
-
-.service-grid-item:hover::before {
-    opacity: 0.05;
-    /* Aumentato leggermente per più contrasto */
+    box-shadow: var(--shadow-sm);
+    height: 100%;
 }
 
 .service-grid-item:hover {
     border-color: var(--color-coastal-light);
-    /* Bordo più brillante al hover */
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    /* Ombra più marcata */
 }
 
 .service-grid-item>* {
@@ -476,15 +475,14 @@
 .service-grid-item i,
 .service-grid-item .icon {
     color: var(--color-ocean-blue);
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     margin-bottom: 1rem;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base);
 }
 
 .service-grid-item:hover i,
 .service-grid-item:hover .icon {
-    transform: scale(1.1);
-    color: var(--color-ocean-dark);
+    transform: translateY(-2px);
 }
 
 /* ========================================
@@ -504,9 +502,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg,
-            rgba(0, 119, 190, 0.7) 0%,
-            rgba(0, 172, 193, 0.5) 100%);
+    background: rgba(10, 58, 107, 0.55);
     opacity: 0;
     transition: opacity var(--transition-base);
 }

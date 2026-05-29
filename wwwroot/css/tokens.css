@@ -1,86 +1,125 @@
 /* ============================================================
    OCEANSIDE DENTAL — DESIGN TOKENS
+   Direction: CLINICAL CALM (premium / enterprise)
    3-tier architecture: Primitive → Semantic → Component
    ------------------------------------------------------------
    Loaded BEFORE coastal-elements.css and app.css.
-   Final colour values are unchanged from the previous flat
-   palette — this only restructures the source of truth so the
-   palette can be retuned in one place without visual drift.
+   The semantic --color-* names are preserved so existing markup
+   keeps working; their VALUES are retuned to the Clinical Calm
+   palette: off-white canvas, deep clinical blue, calm sage,
+   ink text, hairline borders, soft neutral shadows.
    ============================================================ */
 
 :root {
 
     /* ========================================================
-       LAYER 1 — PRIMITIVE
-       Raw, context-free values. Named by hue + numeric scale.
-       Never reference these directly from component CSS.
+       LAYER 1 — PRIMITIVE   (raw, context-free values)
        ======================================================== */
 
-    /* Ocean / brand blues */
-    --primitive-ocean-700: #005A8F;   /* darkest  */
-    --primitive-ocean-600: #0077BE;   /* base brand */
-    --primitive-ocean-400: #1E90FF;   /* bright   */
-    --primitive-sky-300:   #81D4FA;   /* coastal light */
-    --primitive-sky-50:    #F9FCFF;   /* near-white bg */
-    --primitive-aqua-500:  #00ACC1;   /* teal accent */
+    /* Clinical blue — evolved from the legacy #0077BE, deeper & calmer */
+    --primitive-blue-800: #0A3A6B;
+    --primitive-blue-700: #0D4A8A;
+    --primitive-blue-600: #1466B8;   /* brand base */
+    --primitive-blue-500: #2B7DD4;
+    --primitive-blue-300: #9DC4E8;
+    --primitive-blue-100: #DCEAF7;
+    --primitive-blue-50:  #EFF5FB;
 
-    /* Neutrals */
-    --primitive-navy-800:  #1E3A5F;   /* headings / dark text */
-    --primitive-slate-600: #546E7A;   /* secondary text */
-    --primitive-slate-500: #78909C;   /* muted text */
-    --primitive-sand-100:  #F5F5F0;   /* warm surface */
+    /* Sage — calm secondary / health accent */
+    --primitive-sage-700: #2F5E52;
+    --primitive-sage-600: #3F7A6B;
+    --primitive-sage-100: #E3EFEA;
+    --primitive-sage-50:  #F0F6F3;
+
+    /* Ink & neutrals (cool, clinical) */
+    --primitive-ink-900:   #0F1B2D;
+    --primitive-slate-700: #334155;
+    --primitive-slate-600: #475569;
+    --primitive-slate-500: #64748B;
+    --primitive-slate-400: #94A3B8;
+    --primitive-slate-200: #E6EBF1;   /* hairline */
+    --primitive-slate-100: #EEF2F6;
+    --primitive-canvas:    #FBFCFD;   /* off-white page bg */
     --primitive-white:     #FFFFFF;
 
-    /* Status (kept aligned with Bootstrap/app.css usage) */
-    --primitive-green-600: #28a745;
-    --primitive-red-600:   #dc3545;
+    /* Status (WCAG-validated pairings) */
+    --primitive-green-700: #15803D;
+    --primitive-green-50:  #F0FDF4;
+    --primitive-amber-700: #B45309;
+    --primitive-amber-50:  #FFFBEB;
+    --primitive-red-600:   #DC2626;
+    --primitive-red-50:    #FEF2F2;
 
     /* ========================================================
-       LAYER 2 — SEMANTIC
-       Meaning in context. These are the names component CSS and
-       Razor markup already consume across the whole site, so they
-       are preserved 1:1 and now resolve through the primitives.
+       LAYER 2 — SEMANTIC   (meaning; names used across the site)
        ======================================================== */
 
-    /* Brand */
-    --color-ocean-blue:     var(--primitive-ocean-600);
-    --color-ocean-dark:     var(--primitive-ocean-700);
-    --color-ocean-light:    var(--primitive-ocean-400);
-    --color-coastal-light:  var(--primitive-sky-300);
-    --color-aqua-accent:    var(--primitive-aqua-500);
-    --color-sand-beige:     var(--primitive-sand-100);
+    /* Brand (legacy ocean names → clinical blue) */
+    --color-ocean-blue:     var(--primitive-blue-600);
+    --color-ocean-dark:     var(--primitive-blue-700);
+    --color-ocean-deep:     var(--primitive-blue-800);
+    --color-ocean-light:    var(--primitive-blue-500);
+    --color-coastal-light:  var(--primitive-blue-300);
+    --color-aqua-accent:    var(--primitive-sage-600);   /* text-aqua → calm sage */
+    --color-sand-beige:     var(--primitive-slate-100);
 
     /* Text */
-    --color-primary-text:   var(--primitive-navy-800);
+    --color-primary-text:   var(--primitive-ink-900);
     --color-secondary-text: var(--primitive-slate-600);
     --color-text-muted:     var(--primitive-slate-500);
+    --color-on-accent:      var(--primitive-white);
 
     /* Surfaces / background */
-    --color-bg-light:       var(--primitive-sky-50);
+    --color-bg-light:       var(--primitive-canvas);
+    --color-bg-tint:        var(--primitive-blue-50);
     --color-white:          var(--primitive-white);
-
-    /* New semantic helpers (used by component layer below) */
     --color-surface:        var(--primitive-white);
-    --color-border-subtle:  var(--primitive-sky-300);
-    --color-status-success: var(--primitive-green-600);
+    --color-surface-muted:  var(--primitive-slate-100);
+
+    /* Lines & focus */
+    --color-border-subtle:  var(--primitive-slate-200);
+    --color-focus-ring:     rgba(20, 102, 184, 0.35);
+
+    /* Status */
+    --color-status-success: var(--primitive-green-700);
+    --color-status-warning: var(--primitive-amber-700);
     --color-status-danger:  var(--primitive-red-600);
 
     /* ========================================================
-       LAYER 3 — COMPONENT
-       Specific to a UI component, references semantic tokens.
-       Each one is wired into real CSS (no orphans).
+       LAYER 3 — COMPONENT   (per-component, wired into real CSS)
        ======================================================== */
 
     /* App shell */
-    --header-accent:    var(--color-ocean-blue);      /* header bottom rule */
-    --footer-bg:        var(--color-primary-text);    /* footer panel */
-    --footer-heading:   var(--color-coastal-light);   /* footer h5/h6 */
+    --header-bg:        var(--color-white);
+    --header-border:    var(--color-border-subtle);
+    --footer-bg:        var(--primitive-ink-900);
+    --footer-text:      rgba(255, 255, 255, 0.78);
+    --footer-heading:   var(--primitive-white);
+    --footer-line:      rgba(255, 255, 255, 0.12);
 
-    /* Primary button (btn-ocean / btn-primary) */
+    /* Primary button */
     --btn-primary-bg:        var(--color-ocean-blue);
     --btn-primary-bg-hover:  var(--color-ocean-dark);
-    --btn-primary-text:      var(--color-white);
+    --btn-primary-text:      var(--color-on-accent);
+
+    /* Outline button */
+    --btn-outline-fg:        var(--color-ocean-blue);
+    --btn-outline-border:    var(--color-ocean-blue);
+    --btn-outline-bg-hover:  var(--color-ocean-blue);
 
     /* Surface card */
     --card-surface:     var(--color-surface);
+    --card-border:      var(--color-border-subtle);
+
+    /* Hero (premium deep-blue band) */
+    --hero-bg:          var(--color-ocean-deep);
+    --hero-text:        var(--color-on-accent);
+
+    /* Section bands */
+    --section-tint:     var(--color-bg-tint);
+    --section-muted:    var(--color-surface-muted);
+
+    /* Icon medallion */
+    --medallion-bg:     var(--primitive-blue-50);
+    --medallion-fg:     var(--color-ocean-blue);
 }

@@ -15,39 +15,17 @@
    ======================================== */
 
 .site-header {
-    background-color: var(--color-white);
-    border-bottom: 5px solid var(--header-accent);
-    box-shadow: var(--shadow-md);
-    position: relative;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    position: sticky;
+    top: 0;
     z-index: var(--z-sticky);
-    transition: all var(--transition-base);
+    transition: box-shadow var(--transition-base);
 }
 
-.site-header::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg,
-            var(--color-ocean-blue) 0%,
-            var(--color-coastal-light) 50%,
-            var(--color-ocean-blue) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
+/* Subtle elevation once the page scrolls under the sticky header */
+.site-header.is-scrolled {
+    box-shadow: var(--shadow-sm);
 }
 
 /* ========================================
@@ -65,49 +43,19 @@
 
 .site-footer {
     background-color: var(--footer-bg);
-    color: var(--color-white);
+    color: var(--footer-text);
     position: relative;
-    padding: 3rem 0 2rem;
-}
-
-/* Effetto onda decorativo per il footer */
-.site-footer::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg,
-            var(--color-ocean-blue) 0%,
-            var(--color-coastal-light) 50%,
-            var(--color-ocean-blue) 100%);
+    padding: 4rem 0 2rem;
 }
 
 /* Typography nel footer */
 .site-footer h5 {
     color: var(--footer-heading);
-    border-bottom: 2px solid var(--color-ocean-blue);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
     margin-bottom: 1rem;
-    display: inline-block;
-    font-weight: 600;
-    position: relative;
-}
-
-.site-footer h5::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-coastal-light);
-    transition: width var(--transition-base);
-}
-
-.site-footer h5:hover::after {
-    width: 100%;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
 }
 
 .site-footer h6 {
@@ -117,32 +65,13 @@
 
 /* Links nel footer */
 .site-footer a {
-    color: var(--color-white);
-    opacity: 0.85;
-    transition: all var(--transition-fast);
-    position: relative;
+    color: var(--footer-text);
+    transition: color var(--transition-fast);
     display: inline-block;
 }
 
-.site-footer a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-coastal-light);
-    transition: width var(--transition-base);
-}
-
 .site-footer a:hover {
-    opacity: 1;
-    color: var(--color-coastal-light);
-    transform: translateX(3px);
-}
-
-.site-footer a:hover::after {
-    width: 100%;
+    color: var(--footer-heading);
 }
 
 /* Liste nel footer */
@@ -153,11 +82,6 @@
 
 .site-footer ul li {
     margin-bottom: 0.5rem;
-    transition: transform var(--transition-fast);
-}
-
-.site-footer ul li:hover {
-    transform: translateX(5px);
 }
 
 /* ========================================
@@ -176,7 +100,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(129, 212, 250, 0.1);
+    background-color: var(--footer-line);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -246,7 +170,7 @@
    ======================================== */
 
 .site-footer .border-top {
-    border-color: rgba(129, 212, 250, 0.2) !important;
+    border-color: var(--footer-line) !important;
 }
 
 /* ========================================
@@ -311,7 +235,6 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
-    .site-header::after,
     .site-footer a,
     .site-footer img,
     .site-footer .social-icons a,
@@ -343,7 +266,4 @@
     }
 
     .site-header::after,
-    .site-footer::before {
-        display: none;
-    }
 }
