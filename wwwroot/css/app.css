@@ -3,22 +3,9 @@
        OCEANSIDE DENTAL - DESIGN SYSTEM
        ======================================== */
 
-    /* Palette Oceanside Dental - Tema Costiero Pacifico */
-    --color-ocean-blue: #0077BE;
-    --color-ocean-dark: #005A8F;
-    --color-ocean-light: #1E90FF;
-    --color-coastal-light: #81D4FA;
-    --color-aqua-accent: #00ACC1;
-    --color-sand-beige: #F5F5F0;
-
-    /* Colori di testo */
-    --color-primary-text: #1E3A5F;
-    --color-secondary-text: #546E7A;
-    --color-text-muted: #78909C;
-
-    /* Colori di sfondo */
-    --color-bg-light: #F9FCFF;
-    --color-white: #FFFFFF;
+    /* Colour palette (Primitive → Semantic) now lives in css/tokens.css,
+       loaded before this file. The --color-* names below remain the
+       single vocabulary used across the site; only their source moved. */
 
     /* Font Families */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -179,14 +166,14 @@ a:focus-visible {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: var(--color-ocean-blue);
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
     border-color: var(--color-ocean-dark);
     box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-ocean-dark);
+    background-color: var(--btn-primary-bg-hover);
     border-color: var(--color-ocean-dark);
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);

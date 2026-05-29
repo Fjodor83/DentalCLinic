@@ -16,7 +16,7 @@
 
 .site-header {
     background-color: var(--color-white);
-    border-bottom: 5px solid var(--color-ocean-blue);
+    border-bottom: 5px solid var(--header-accent);
     box-shadow: var(--shadow-md);
     position: relative;
     z-index: var(--z-sticky);
@@ -64,7 +64,7 @@
    ======================================== */
 
 .site-footer {
-    background-color: var(--color-primary-text);
+    background-color: var(--footer-bg);
     color: var(--color-white);
     position: relative;
     padding: 3rem 0 2rem;
@@ -86,7 +86,7 @@
 
 /* Typography nel footer */
 .site-footer h5 {
-    color: var(--color-coastal-light);
+    color: var(--footer-heading);
     border-bottom: 2px solid var(--color-ocean-blue);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
@@ -111,7 +111,7 @@
 }
 
 .site-footer h6 {
-    color: var(--color-coastal-light);
+    color: var(--footer-heading);
     opacity: 0.9;
 }
 

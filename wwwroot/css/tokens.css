@@ -1,0 +1,86 @@
+/* ============================================================
+   OCEANSIDE DENTAL — DESIGN TOKENS
+   3-tier architecture: Primitive → Semantic → Component
+   ------------------------------------------------------------
+   Loaded BEFORE coastal-elements.css and app.css.
+   Final colour values are unchanged from the previous flat
+   palette — this only restructures the source of truth so the
+   palette can be retuned in one place without visual drift.
+   ============================================================ */
+
+:root {
+
+    /* ========================================================
+       LAYER 1 — PRIMITIVE
+       Raw, context-free values. Named by hue + numeric scale.
+       Never reference these directly from component CSS.
+       ======================================================== */
+
+    /* Ocean / brand blues */
+    --primitive-ocean-700: #005A8F;   /* darkest  */
+    --primitive-ocean-600: #0077BE;   /* base brand */
+    --primitive-ocean-400: #1E90FF;   /* bright   */
+    --primitive-sky-300:   #81D4FA;   /* coastal light */
+    --primitive-sky-50:    #F9FCFF;   /* near-white bg */
+    --primitive-aqua-500:  #00ACC1;   /* teal accent */
+
+    /* Neutrals */
+    --primitive-navy-800:  #1E3A5F;   /* headings / dark text */
+    --primitive-slate-600: #546E7A;   /* secondary text */
+    --primitive-slate-500: #78909C;   /* muted text */
+    --primitive-sand-100:  #F5F5F0;   /* warm surface */
+    --primitive-white:     #FFFFFF;
+
+    /* Status (kept aligned with Bootstrap/app.css usage) */
+    --primitive-green-600: #28a745;
+    --primitive-red-600:   #dc3545;
+
+    /* ========================================================
+       LAYER 2 — SEMANTIC
+       Meaning in context. These are the names component CSS and
+       Razor markup already consume across the whole site, so they
+       are preserved 1:1 and now resolve through the primitives.
+       ======================================================== */
+
+    /* Brand */
+    --color-ocean-blue:     var(--primitive-ocean-600);
+    --color-ocean-dark:     var(--primitive-ocean-700);
+    --color-ocean-light:    var(--primitive-ocean-400);
+    --color-coastal-light:  var(--primitive-sky-300);
+    --color-aqua-accent:    var(--primitive-aqua-500);
+    --color-sand-beige:     var(--primitive-sand-100);
+
+    /* Text */
+    --color-primary-text:   var(--primitive-navy-800);
+    --color-secondary-text: var(--primitive-slate-600);
+    --color-text-muted:     var(--primitive-slate-500);
+
+    /* Surfaces / background */
+    --color-bg-light:       var(--primitive-sky-50);
+    --color-white:          var(--primitive-white);
+
+    /* New semantic helpers (used by component layer below) */
+    --color-surface:        var(--primitive-white);
+    --color-border-subtle:  var(--primitive-sky-300);
+    --color-status-success: var(--primitive-green-600);
+    --color-status-danger:  var(--primitive-red-600);
+
+    /* ========================================================
+       LAYER 3 — COMPONENT
+       Specific to a UI component, references semantic tokens.
+       Each one is wired into real CSS (no orphans).
+       ======================================================== */
+
+    /* App shell */
+    --header-accent:    var(--color-ocean-blue);      /* header bottom rule */
+    --footer-bg:        var(--color-primary-text);    /* footer panel */
+    --footer-heading:   var(--color-coastal-light);   /* footer h5/h6 */
+
+    /* Primary button (btn-ocean / btn-primary) */
+    --btn-primary-bg:        var(--color-ocean-blue);
+    --btn-primary-bg-hover:  var(--color-ocean-dark);
+    --btn-primary-text:      var(--color-white);
+
+    /* Surface card */
+    --card-surface:     var(--color-surface);
+}
