@@ -318,6 +318,13 @@
     box-shadow: var(--shadow-lg);
 }
 
+/* Compact variant used in testimonial author rows */
+.icon-ocean.icon-ocean-sm {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+
 /* ========================================
    TESTIMONIANZE/QUOTE
    ======================================== */
@@ -557,17 +564,18 @@
    PERFORMANCE OPTIMIZATIONS
    ======================================== */
 
-/* Utilizzo di will-change per animazioni frequenti */
-.hover-lift,
-.service-grid-item,
-.card-ocean,
-.btn-ocean {
+/* will-change is only promoted on hover (just before the transition runs).
+   Leaving it permanently on many elements forces the browser to keep extra
+   compositor layers alive, wasting memory — so we scope it to :hover. */
+.hover-lift:hover,
+.service-grid-item:hover,
+.card-ocean:hover,
+.btn-ocean:hover {
     will-change: transform;
 }
 
-/* GPU acceleration per transizioni fluide */
-.nav-link::after,
-.service-grid-item::before,
-.card-ocean::before {
+.nav-link:hover::after,
+.service-grid-item:hover::before,
+.card-ocean:hover::before {
     will-change: width, opacity;
 }

@@ -1,4 +1,4 @@
-@page "/contact"
+﻿@page "/contact"
 @using DentalCLinic.Models
 @using Microsoft.JSInterop
 @inject IJSRuntime JS
@@ -26,22 +26,22 @@
                     <address class="mb-0">
                         <strong class="d-block mb-2 text-aqua">Oceanside Dental Centre</strong>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-aqua me-2">location_on</span>
+                            <span class="material-icons text-aqua me-2" aria-hidden="true">location_on</span>
                             <span>
                                 175 Corfield St S<br>
                                 Parksville, BC V9P 2G1
                             </span>
                         </div>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-aqua me-2">phone</span>
+                            <span class="material-icons text-aqua me-2" aria-hidden="true">phone</span>
                             <span>250.586.4404</span>
                         </div>
                         <div class="d-flex mb-2">
-                            <span class="material-icons text-aqua me-2">print</span>
+                            <span class="material-icons text-aqua me-2" aria-hidden="true">print</span>
                             <span>250.586.1287</span>
                         </div>
                         <div class="d-flex">
-                            <span class="material-icons text-aqua me-2">email</span>
+                            <span class="material-icons text-aqua me-2" aria-hidden="true">email</span>
                             <a href="mailto:info@oceansidedentalcentre.com" class="text-decoration-none text-body">info@oceansidedentalcentre.com</a>
                         </div>
                     </address>
@@ -81,7 +81,7 @@
             </div>
 
              <!-- Google Map -->
-             <div class="map-container mt-4 border border-secondary shadow-sm" style="overflow:hidden; border-radius: 0.5rem;">
+             <div class="map-container mt-4 border border-secondary shadow-sm">
                  <iframe 
                      width="100%" 
                      height="300" 
@@ -97,7 +97,7 @@
         <div class="col-lg-7">
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
-                    <h2 class="h4 mb-4" style="color: var(--color-ocean-blue);">Request an Appointment</h2>
+                    <h2 class="h4 mb-4 text-ocean">Request an Appointment</h2>
                     
                     @if (showSuccessMessage)
                     {

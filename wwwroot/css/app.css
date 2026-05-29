@@ -94,6 +94,15 @@ h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
+/* Visible focus ring for the heading that receives focus on route change
+   (App.razor uses <FocusOnNavigate Selector="h1" />). Without this the
+   programmatic focus would be invisible because of `outline: none` above. */
+h1:focus-visible {
+    outline: 3px solid var(--color-coastal-light);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
 h2 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
@@ -337,6 +346,41 @@ a:focus-visible {
 /* Text Colors */
 .text-aqua {
     color: var(--color-aqua-accent);
+}
+
+/* .text-sage was referenced across FAQ/Clinic/Biografy but never defined,
+   so those accents fell back to the inherited body color. Aliased to the
+   coastal aqua accent to stay on-palette and match .text-aqua. */
+.text-sage {
+    color: var(--color-aqua-accent);
+}
+
+.text-ocean {
+    color: var(--color-ocean-blue);
+}
+
+/* Bootstrap 5 dropped .text-justify, but several pages (ServiceDetail,
+   Biografy, Clinic) and the service repository markup rely on it. Restored
+   here so justified body copy renders as intended. */
+.text-justify {
+    text-align: justify;
+}
+
+/* ========================================
+   MATERIAL ICON SIZE SCALE
+   Replaces ad-hoc inline font-size on icons so sizing stays tokenised
+   and overridable. Combine with .material-icons.
+   ======================================== */
+.material-icons.mi-sm {
+    font-size: 18px;
+}
+
+.material-icons.mi-md {
+    font-size: 20px;
+}
+
+.material-icons.mi-lg {
+    font-size: 36px;
 }
 
 /* Map Components */

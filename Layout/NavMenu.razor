@@ -1,13 +1,15 @@
 ﻿
-<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 py-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 py-2" aria-label="Main navigation">
     <div class="container-fluid px-0">
         <a class="navbar-brand py-0 d-flex align-items-center" href="">
-            <img src="images/Logo.png" alt="Oceanside Dental Centre" height="100" class="d-inline-block align-text-top" />
+            <img src="images/Logo.png" alt="Oceanside Dental Centre — home" width="224" height="100" decoding="async" class="d-inline-block align-text-top" />
         </a>
-        <button class="navbar-toggler border-0" type="button" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon fs-2"></span>
+        <button class="navbar-toggler border-0" type="button" @onclick="ToggleNavMenu"
+                aria-label="Toggle navigation menu" aria-controls="mainNav"
+                aria-expanded="@(collapseNavMenu ? "false" : "true")">
+            <span class="navbar-toggler-icon fs-2" aria-hidden="true"></span>
         </button>
-        <div class="@NavMenuCssClass navbar-collapse justify-content-end">
+        <div id="mainNav" class="@NavMenuCssClass navbar-collapse justify-content-end">
             <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
                     <NavLink class="nav-link fs-5 fw-bold mx-2 px-3 py-2" href="" Match="NavLinkMatch.All" @onclick="CloseNavMenu">Home</NavLink>

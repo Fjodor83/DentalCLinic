@@ -14,7 +14,7 @@ namespace DentalCLinic.Services
                 Title = "Bridges",
 
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             Dental bridges take their name from the way they replace one or more missing teeth caused by trauma or decay.
                             A bridge is permanently attached to the neighboring teeth, providing stability and improving comfort while
@@ -29,7 +29,7 @@ namespace DentalCLinic.Services
                 ",
 
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             The crowns that support a bridge can be made from metal, tooth‑colored materials, or a combination of both.
                             The choice depends on aesthetics, function, and tissue compatibility, ensuring the best outcome for each
@@ -51,7 +51,7 @@ namespace DentalCLinic.Services
                 Slug = "composite-restorations",
                 Title = "Composite Restorations",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p class='h5 text-sage mb-2'>Amalgam (Mercury) Free Fillings</p>
 
                         <p>
@@ -66,7 +66,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             At the time, metal fillings were the best we had. Technology has allowed for the development of a number of new materials. Porcelain inlays, onlays, crowns and composite resins materials can create fillings that are tooth colored and aesthetically pleasing but they also are more conservative and add strength to the tooth.
                         </p>
@@ -84,7 +84,7 @@ namespace DentalCLinic.Services
                 Title = "Cosmetic Veneers",
 
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             Dental veneers are a cosmetic dentistry solution in which a thin layer of tooth‑colored porcelain or composite
                             is applied to the front surfaces of the teeth. They help correct worn enamel, uneven alignment or spacing,
@@ -108,7 +108,7 @@ namespace DentalCLinic.Services
                 ",
 
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                                 <strong>Genetics:</strong> Some individuals naturally have spacing between teeth that increases with age.<br />
                                 <strong>Uneven teeth:</strong> Often caused by grinding or general wear over time.
                         <p>
@@ -142,7 +142,7 @@ namespace DentalCLinic.Services
                 BeforeImageLabel = "",
                 AfterImageLabel = "",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         
                         <p>
                             Sometimes referred to as “dental caps” Our doctors use crowns to improve the appearance, and overall strength of a previously restored or damaged tooth. It is a covering that is placed over a carefully prepped tooth or implant. 
@@ -153,7 +153,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                          <p>
                             There are many different types of crowns including those where the outer porcelain layer is fused to a metal sub-frame (Porcelain Fused to Metal Crowns or “PFM’s”) and those where there is no metal whatsoever (All Porcelain Crowns or Porcelain Jacket Crowns).
                         </p>
@@ -170,7 +170,7 @@ namespace DentalCLinic.Services
                 Slug = "endo-therapy",
                 Title = "Root Canal Therapy",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Endodontic Treatment</h3>
                         <p>
                             Inside each tooth lies a slender strand of ‘pulp’, which contains nerves and blood vessels that provide nutrients to the tooth —that extends down to the tooth’s root. If the pulp becomes infected or injured, the tooth’s nerves die, and often without endodontic treatment, this causes the tooth die as well. 
@@ -184,7 +184,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             The procedure is relatively simple, despite what most people believe or have heard. The tooth is numbed (with anesthetic), a small opening is made through the biting surface of the tooth to access the infected material and relieve the pressure caused by the infection. The infected material is then removed and the pulp chamber is sealed. 
                         </p>
@@ -204,7 +204,7 @@ namespace DentalCLinic.Services
                 Slug = "extractions",
                 Title = "Extractions",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             No one likes the idea of losing a tooth. Our doctors recommend an extraction only when no other treatment
                             option is available to save the tooth.
@@ -220,7 +220,7 @@ namespace DentalCLinic.Services
 
 
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             When wisdom teeth do not have enough space to emerge properly, they may become impacted. Impacted wisdom teeth
                             can push against neighboring teeth, contribute to crowding, or lead to infections and gum inflammation.
@@ -242,7 +242,7 @@ namespace DentalCLinic.Services
                 Slug = "hygiene",
                 Title = "Hygiene",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Oral Hygiene</h3>
                         <p>
                             The oral hygiene you practice at home—brushing at least two times a day and flossing every day—is great for keeping your smile healthy and beautiful between visits to your dentist, but it doesn’t take the place of the more in-depth cleaning we’re able to perform during your regular hygiene visits. Here we can also perform fluoride and desensitizing treatments, take actions to prevent or reverse gum disease, or even tell you about a variety of dental options to keep your breath feeling and smelling fresh!
@@ -253,7 +253,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Our Hygiene Program</h3>
                         <p>
                             Our Hygiene program is committed to preventing and eliminating this destructive disease. Periodontal disease is caused by a large build-up of the bacteria found in plaque, which erode the soft and underlying hard tissues of the mouth.
@@ -276,7 +276,7 @@ namespace DentalCLinic.Services
                 BeforeImageLabel = "",
                 AfterImageLabel = "",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             Our doctors have been placing dental implants for over a decade. A dental implant restoration is attaching artificial teeth to titanium root implants anchored in the bone below the gum line. After the anchor has been surgically placed in the jawbone, excess bone and gum grow around the implant, holding it firmly in place. An artificial tooth or teeth can then be attached to the implant. The end result is a strong, secure tooth that is virtually indistinguishable from natural teeth. They can be used to secure individual teeth, bridges or full dentures.
                         </p>
@@ -286,7 +286,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <p>
                             The implants themselves are tiny titanium posts that are placed into the jawbone where teeth are missing. The bone bonds with the titanium, creating a strong foundation for artificial teeth/crowns. Implants can help preserve facial structure, preventing the bone deterioration which occurs when teeth are missing. This has the visual impact of a face lift, making you look years younger.
                         </p>
@@ -310,7 +310,7 @@ namespace DentalCLinic.Services
                 BeforeImageLabel = "",
                 AfterImageLabel = "",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Laser Assisted Gum Therapy</h3>
                         <p>
                             New technology means more solutions—laser assisted gum therapy.
@@ -324,7 +324,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Benefits</h3>
                         <p>
                             The oral health benefits of the diode laser are possible because the laser light is specifically absorbed by cellular pigments, melanin and hemoglobin. This results in the destruction of bacterial cells that commonly live in deep pockets of gum tissue. 
@@ -344,7 +344,7 @@ namespace DentalCLinic.Services
                 BeforeImageLabel = "",
                 AfterImageLabel = "",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Small Diameter Implants</h3>
                         <p>
                             Are you interested in implant dentistry but a traditional implant is not feasible?
@@ -358,7 +358,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Cost & Benefits</h3>
                         <p>
                             Typically, mini implants cost less than half the price of traditional larger implants and can be priced as low as a quarter of the cost. In addition, the decreased operation and recovery time associated with mini implants makes them a less expensive alternative to conventional implants.
@@ -376,7 +376,7 @@ namespace DentalCLinic.Services
                 Slug = "sealants",
                 Title = "Sealants",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Pits and Fissures</h3>
                         <p>
                             The top surfaces of your teeth – where the chewing takes place – aren’t smooth and flat. They are crevices with tiny hills and valleys – called pits and fissures. These are places where plaque can build up safe from your toothbrush and dental floss. Some of the pits and fissures are so narrow that even a single bristle from your toothbrush can’t get deep enough to clean them out.
@@ -384,7 +384,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Prevention</h3>
                         <p>
                             One method of preventing cavities from developing in the pits and fissures is to seal them with a varnish called a pit and fissure sealant. If our doctors determine you need a sealant to help protect your teeth from decay, some special steps are taken.
@@ -402,7 +402,7 @@ namespace DentalCLinic.Services
                 Slug = "tmj-pain",
                 Title = "TMJ - Jaw and Headache Pain",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>What is TMJ?</h3>
                         <p>
                             The temporomandibular joint (TMJ) connects your jawbone to your skull. TMJ disorders can cause pain in your jaw joint and in the muscles that control jaw movement. This condition is sometimes called TMD (temporomandibular disorder).
@@ -422,7 +422,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Treatment Options</h3>
                         <p>
                             In some cases, the symptoms of TMJ disorders may go away without treatment. If your symptoms persist, our doctors may recommend a variety of treatment options, often more than one to be done at the same time.
@@ -446,7 +446,7 @@ namespace DentalCLinic.Services
                 Slug = "whitening",
                 Title = "Teeth Whitening",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Professional Teeth Whitening</h3>
                         <p>
                             A brighter, whiter smile can make a significant difference in your appearance and confidence. At Oceanside Dental Centre, we offer professional teeth whitening solutions that are safe, effective, and produce dramatic results.
@@ -461,7 +461,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Take-Home Bleaching Kits</h3>
                         <p>
                             For patients who prefer to whiten their teeth at home, we offer professional-grade take-home bleaching kits. These kits include custom-fitted trays made from impressions of your teeth and professional-strength whitening gel.
@@ -491,7 +491,7 @@ namespace DentalCLinic.Services
                 Slug = "children-seniors",
                 Title = "Children & Seniors Dentistry",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Dentistry for All Stages of Life</h3>
                         <p>
                             At Oceanside Dental Centre, we believe that quality dental care should be accessible to patients of all ages. We are proud to offer specialized services for both our youngest and our most experienced patients.
@@ -510,7 +510,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Senior's Dentistry</h3>
                         <p>
                             As we age, our dental needs change. We offer comprehensive dental services tailored to the unique needs of our senior patients, helping them maintain healthy smiles and optimal oral function.
@@ -538,7 +538,7 @@ namespace DentalCLinic.Services
                 Slug = "child-first-visit",
                 Title = "Child's First Visit",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Making the First Visit Special</h3>
                         <p>
                             The first dental visit is an important milestone in your child's healthcare journey. At Oceanside Dental Centre, we strive to make this experience positive, fun, and educational.
@@ -561,7 +561,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Preparing Your Child</h3>
                         <p>
                             Here are some tips to help prepare your child for their first dental visit:
@@ -590,7 +590,7 @@ namespace DentalCLinic.Services
                 Slug = "healthy-kids",
                 Title = "Healthy Kids Program",
                 DescriptionCol1 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>BC Healthy Kids Program</h3>
                         <p>
                             Oceanside Dental Centre is proud to be a participating provider in the BC Healthy Kids Program. This program provides basic dental coverage for eligible children and youth in British Columbia.
@@ -618,7 +618,7 @@ namespace DentalCLinic.Services
                     </div>
                 ",
                 DescriptionCol2 = @"
-                    <div style='text-align:justify'>
+                    <div class='text-justify'>
                         <h3 class='h5 text-sage mb-3'>Our Commitment</h3>
                         <p>
                             We accept Healthy Kids Dental Insurance <strong>at par</strong> for all children 18 years old and under. This means families pay no additional fees for covered services.
