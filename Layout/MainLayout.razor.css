@@ -1,3 +1,8 @@
+/* ========================================
+   MAIN LAYOUT - OCEANSIDE DENTAL CENTRE
+   Modern Layout with Enhanced Visual Effects
+   ======================================== */
+
 .page {
     position: relative;
     display: flex;
@@ -5,35 +10,260 @@
     min-height: 100vh;
 }
 
+/* ========================================
+   HEADER
+   ======================================== */
+
 .site-header {
-    background-color: var(--color-white);
-    border-bottom: 5px solid var(--color-sage-green);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    transition: box-shadow var(--transition-base);
 }
+
+/* Subtle elevation once the page scrolls under the sticky header */
+.site-header.is-scrolled {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
 
 .main-content {
     flex: 1;
+    position: relative;
 }
+
+/* ========================================
+   FOOTER
+   ======================================== */
 
 .site-footer {
-    background-color: var(--color-primary-text);
-    color: var(--color-white);
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    position: relative;
+    padding: 4rem 0 2rem;
 }
 
+/* Typography nel footer */
+.site-footer h5 {
+    color: var(--footer-heading);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.site-footer h6 {
+    color: var(--footer-heading);
+    opacity: 0.9;
+}
+
+/* Links nel footer */
 .site-footer a {
-    color: var(--color-white);
-    opacity: 0.8;
+    color: var(--footer-text);
+    transition: color var(--transition-fast);
+    display: inline-block;
 }
 
 .site-footer a:hover {
-    opacity: 1;
-    text-decoration: underline;
+    color: var(--footer-heading);
 }
 
-.site-footer h5 {
-    color: var(--color-sage-green);
-    border-bottom: 2px solid var(--color-sage-green);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    display: inline-block;
+/* Liste nel footer */
+.site-footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   SOCIAL ICONS
+   ======================================== */
+
+.site-footer .social-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.site-footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--footer-line);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--color-ocean-blue);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    z-index: 0;
+}
+
+.site-footer .social-icons a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.site-footer .social-icons a:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.site-footer .social-icons a i,
+.site-footer .social-icons a svg {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   PAYMENT METHODS
+   ======================================== */
+
+.site-footer .badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    background-color: #28a745;
+}
+
+.site-footer .badge:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-sm);
+}
+
+.site-footer img {
+    transition: all var(--transition-base);
+    filter: brightness(1) contrast(1);
+}
+
+.site-footer img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* ========================================
+   FOOTER BOTTOM (Copyright)
+   ======================================== */
+
+.site-footer .border-top {
+    border-color: var(--footer-line) !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .site-footer h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .site-footer .col-md-4 {
+        margin-bottom: 2rem;
+    }
+
+    .site-footer .social-icons {
+        justify-content: center;
+    }
+
+    .site-footer ul li {
+        text-align: center;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Fade in animation per il contenuto */
+.main-content>* {
+    animation: contentFadeIn 0.5s ease-out;
+}
+
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Focus states migliorati */
+.site-footer a:focus-visible {
+    outline: 2px solid var(--color-coastal-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .site-footer a,
+    .site-footer img,
+    .site-footer .social-icons a,
+    .main-content>* {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* ========================================
+   DARK MODE SUPPORT (Future Enhancement)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* Placeholder per futuro supporto dark mode */
+    /* .site-header { ... } */
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .site-header,
+    .site-footer {
+        box-shadow: none;
+        border: none;
+    }
+
+    .site-header::after,
 }

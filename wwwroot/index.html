@@ -4,15 +4,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DentalCLinic</title>
+    <title>Oceanside Dental Centre — Family &amp; Cosmetic Dentistry in Parksville, BC</title>
+    <meta name="description" content="Oceanside Dental Centre in Parksville, BC offers family and cosmetic dentistry: cleanings, implants, crowns, whitening, laser therapy and more. Now accepting new patients." />
+    <meta name="theme-color" content="#0077BE" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Oceanside Dental Centre — Parksville, BC" />
+    <meta property="og:description" content="Family &amp; cosmetic dentistry in Parksville, BC. Now accepting new patients." />
+    <meta property="og:image" content="icon-192.png" />
+
     <base href="/" />
 
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/utilities.css" />
+    <!-- Fonts: Inter (UI/body) + Newsreader (calm display serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+        rel="stylesheet">
 
-    <!-- Material Icons (Google ufficiale) -->
+    <!-- Material Icons (Google) -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/coastal-elements.css" />
+    <link rel="stylesheet" href="css/app.css" />
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="DentalCLinic.styles.css" rel="stylesheet" />
@@ -34,6 +53,13 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Custom Email Service -->
+    <script src="js/emailService.js"></script>
+
     <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
 </body>
 

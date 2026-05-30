@@ -1,85 +1,474 @@
 :root {
-    --color-sage-green: #8C9B7A;
-    --color-sage-dark: #6e7a60;
-    --color-primary-text: #0f2647;
-    --color-bg-light: #F9F9F9;
-    --color-white: #FFFFFF;
-    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* ========================================
+       OCEANSIDE DENTAL - DESIGN SYSTEM
+       ======================================== */
+
+    /* Colour palette (Primitive → Semantic) now lives in css/tokens.css,
+       loaded before this file. The --color-* names below remain the
+       single vocabulary used across the site; only their source moved. */
+
+    /* Font Families — Clinical Calm */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+    /* Shadows — soft, neutral, premium (no blue tint) */
+    --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.04), 0 1px 3px rgba(15, 27, 45, 0.06);
+    --shadow-md: 0 2px 6px rgba(15, 27, 45, 0.05), 0 6px 16px rgba(15, 27, 45, 0.07);
+    --shadow-lg: 0 8px 24px rgba(15, 27, 45, 0.08), 0 2px 6px rgba(15, 27, 45, 0.04);
+    --shadow-xl: 0 20px 48px rgba(15, 27, 45, 0.12), 0 6px 16px rgba(15, 27, 45, 0.06);
+    --shadow-glow: 0 0 0 4px var(--color-focus-ring);
+
+    /* Border Radius — calm, moderate */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal: 1040;
+    --z-popover: 1050;
+    --z-tooltip: 1060;
 }
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 html,
 body {
     font-family: var(--font-primary);
     color: var(--color-primary-text);
     background-color: var(--color-bg-light);
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
-a,
-.btn-link {
-    color: var(--color-sage-green);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--color-sage-dark);
-    text-decoration: underline;
-}
-
+/* Typography — Clinical Calm: elegant serif display, restrained weights */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary-text);
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    outline: none;
+    /* Previene outline di focus su elementi non interattivi */
+}
+
+h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+/* Bootstrap display utilities adopt the calm serif at restrained weight */
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+}
+
+/* A refined lead paragraph for intros */
+.lead {
+    font-weight: 400;
+    color: var(--color-secondary-text);
+}
+
+/* Visible focus ring for the heading that receives focus on route change
+   (App.razor uses <FocusOnNavigate Selector="h1" />). Without this the
+   programmatic focus would be invisible because of `outline: none` above. */
+h1:focus-visible {
+    outline: 3px solid var(--color-coastal-light);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Links */
+a {
+    color: var(--color-ocean-blue);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-ocean-dark);
+}
+
+a:focus-visible {
+    outline: 3px solid var(--color-coastal-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Navbar Links Override - Alta specificità per sovrascrivere Bootstrap */
+.navbar-light .navbar-nav .nav-link,
+.navbar-nav .nav-link {
     color: var(--color-primary-text);
 }
 
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: var(--color-ocean-blue);
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-nav .nav-link.active {
+    color: var(--color-ocean-blue);
+}
+
+/* Dropdown toggle */
+.navbar-nav .dropdown-toggle {
+    color: var(--color-primary-text);
+}
+
+.navbar-nav .dropdown-toggle:hover,
+.navbar-nav .dropdown-toggle:focus {
+    color: var(--color-ocean-blue);
+}
+
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: var(--radius-md);
+    padding: 0.625rem 1.5rem;
+    transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-lg {
+    padding: 0.85rem 2rem;
+    font-size: 1.0625rem;
+}
+
 .btn-primary {
-    color: #fff;
-    background-color: var(--color-sage-green);
-    border-color: var(--color-sage-dark);
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--color-ocean-dark);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-sage-dark);
-    border-color: var(--color-sage-dark);
+    background-color: var(--btn-primary-bg-hover);
+    border-color: var(--color-ocean-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary-custom {
-    color: #fff;
-    background-color: var(--color-sage-green);
-    border-color: var(--color-sage-dark);
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--color-sage-dark);
-    border-color: var(--color-sage-dark);
-    color: #fff;
+    background-color: var(--btn-primary-bg-hover);
+    border-color: var(--btn-primary-bg-hover);
+    color: var(--btn-primary-text);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
+.btn-outline-ocean {
+    color: var(--btn-outline-fg);
+    border-color: var(--btn-outline-border);
+    border-width: 1px;
+    background-color: transparent;
+}
+
+.btn-outline-ocean:hover {
+    background-color: var(--btn-outline-bg-hover);
+    color: var(--color-on-accent);
+    border-color: var(--btn-outline-bg-hover);
+}
+
+/* Focus States — unified premium focus ring */
+.btn:focus-visible,
+.btn-link.nav-link:focus-visible,
 .form-control:focus,
 .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: var(--shadow-glow);
 }
+
+/* ========================================
+   FORMS
+   ======================================== */
+
+.form-label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-secondary-text);
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+    padding: 0.625rem 0.875rem;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.form-control:focus {
+    border-color: var(--color-ocean-blue);
+    box-shadow: var(--shadow-glow);
+}
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder {
+    text-align: start;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 2px solid #26b050;
+    outline-offset: 2px;
+}
+
+.invalid {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+.validation-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
 
 .content {
     padding-top: 1.1rem;
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+/* ========================================
+   ACCORDION
+   ======================================== */
+
+.accordion-button {
+    font-weight: 500;
+    transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-.invalid {
-    outline: 1px solid red;
+.accordion-item {
+    border: 1px solid var(--color-border-subtle) !important;
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
 }
 
-.validation-message {
-    color: red;
+.accordion-button:not(.collapsed) {
+    background-color: var(--color-bg-tint) !important;
+    color: var(--color-ocean-dark) !important;
+    box-shadow: inset 3px 0 0 var(--color-ocean-blue);
 }
+
+.accordion-button:focus-visible {
+    box-shadow: var(--shadow-glow);
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231466B8'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231466B8'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Hover Effects */
+.hover-lift {
+    transition: all var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Background Colors */
+.bg-primary-custom {
+    background-color: var(--color-ocean-dark) !important;
+}
+
+.bg-coastal {
+    background-color: var(--color-coastal-light);
+}
+
+.bg-sand {
+    background-color: var(--color-sand-beige);
+}
+
+.bg-ocean-gradient {
+    background-color: var(--hero-bg);
+    background-image:
+        radial-gradient(120% 140% at 90% 0%, rgba(43, 125, 212, 0.40) 0%, transparent 55%);
+    color: var(--color-on-accent);
+}
+
+.bg-ocean-gradient h1,
+.bg-ocean-gradient h2,
+.bg-ocean-gradient h3,
+.bg-ocean-gradient h4,
+.bg-ocean-gradient h5 {
+    color: var(--color-on-accent);
+}
+
+/* Text Colors */
+.text-aqua {
+    color: var(--color-aqua-accent);
+}
+
+/* .text-sage was referenced across FAQ/Clinic/Biografy but never defined,
+   so those accents fell back to the inherited body color. Aliased to the
+   coastal aqua accent to stay on-palette and match .text-aqua. */
+.text-sage {
+    color: var(--color-aqua-accent);
+}
+
+.text-ocean {
+    color: var(--color-ocean-blue);
+}
+
+/* Bootstrap 5 dropped .text-justify, but several pages (ServiceDetail,
+   Biografy, Clinic) and the service repository markup rely on it. Restored
+   here so justified body copy renders as intended. */
+.text-justify {
+    text-align: justify;
+}
+
+/* ========================================
+   MATERIAL ICON SIZE SCALE
+   Replaces ad-hoc inline font-size on icons so sizing stays tokenised
+   and overridable. Combine with .material-icons.
+   ======================================== */
+.material-icons.mi-sm {
+    font-size: 18px;
+}
+
+.material-icons.mi-md {
+    font-size: 20px;
+}
+
+.material-icons.mi-lg {
+    font-size: 36px;
+}
+
+/* Map Components */
+.map-container {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.map-iframe {
+    border: 0;
+}
+
+.fab-directions {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-ocean-blue);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+    z-index: 20;
+    transition: all var(--transition-base);
+}
+
+.fab-directions i {
+    font-size: 1.4rem;
+}
+
+.fab-directions:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+    background-color: var(--color-ocean-dark);
+    color: #fff;
+}
+
+/* ========================================
+   ERROR HANDLING
+   ======================================== */
 
 #blazor-error-ui {
     color-scheme: light only;
@@ -92,7 +481,7 @@ h6 {
     padding: 0.6rem 1.25rem 0.7rem 1.25rem;
     position: fixed;
     width: 100%;
-    z-index: 1000;
+    z-index: var(--z-tooltip);
 }
 
 #blazor-error-ui .dismiss {
@@ -109,8 +498,12 @@ h6 {
 }
 
 .blazor-error-boundary::after {
-    content: "An error has occurred."
+    content: "An error has occurred.";
 }
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
 
 .loading-progress {
     position: absolute;
@@ -130,7 +523,7 @@ h6 {
 }
 
 .loading-progress circle:last-child {
-    stroke: #1b6ec2;
+    stroke: var(--color-ocean-blue);
     stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
     transition: stroke-dasharray 0.05s ease-in-out;
 }
@@ -146,98 +539,89 @@ h6 {
     content: var(--blazor-load-percentage-text, "Loading");
 }
 
+/* ========================================
+   CODE BLOCKS
+   ======================================== */
+
 code {
     color: #c02d76;
+code {
+    color: #c02d76;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    background-color: rgba(0, 119, 190, 0.05);
+    border-radius: 4px;
 }
 
-.form-floating>.form-control-plaintext::placeholder,
-.form-floating>.form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-2xl: 2.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
 }
 
-.form-floating>.form-control-plaintext:focus::placeholder,
-.form-floating>.form-control:focus::placeholder {
-    text-align: start;
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.map-container {
-    border-radius: 12px;
-    overflow: hidden;
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-.map-iframe {
-    border: 0;
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
-.fab-directions {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    width: 56px;
-    height: 56px;
-    background-color: #1a73e8;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
-    text-decoration: none;
-    z-index: 20;
-    transition: transform .15s ease, box-shadow .15s ease;
+/* Animation utility classes */
+.animate-fade-in {
+    animation: fadeIn var(--transition-slow) ease-out;
 }
 
-.fab-directions i {
-    font-size: 1.4rem;
+.animate-slide-in {
+    animation: slideInFromLeft var(--transition-slow) ease-out;
 }
 
-.fab-directions:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .3);
-    color: #fff;
-}
-
-/* Accordion styles */
-.accordion-button:not(.collapsed) {
-    background-color: var(--color-sage-green) !important;
-    color: white !important;
-}
-
-.accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem rgba(140, 155, 122, 0.25);
-}
-
-.accordion-button::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238C9B7A'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
-.accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
-/* Service cards hover */
-.hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
-}
-
-/* Button outline sage */
-.btn-outline-sage {
-    color: var(--color-sage-green);
-    border-color: var(--color-sage-green);
-}
-
-.btn-outline-sage:hover {
-    background-color: var(--color-sage-green);
-    color: white;
-}
-
-/* Background primary custom */
-.bg-primary-custom {
-    background-color: var(--color-primary-text) !important;
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

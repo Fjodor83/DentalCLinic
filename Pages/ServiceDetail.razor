@@ -6,7 +6,7 @@
 
 @if (Service != null)
 {
-    <div class="row bg-sage text-white py-3 mb-5">
+    <div class="row bg-ocean-gradient text-white py-3 mb-5">
         <div class="container">
             <div class="col-12 text-center">
                 <h1 class="h3 m-0">@Service.Title</h1>
@@ -40,21 +40,21 @@
                                     // Two Column Layout (Before & After)
                                     <div class="col-md-6 mb-4 mb-md-0">
                                         <div class="card h-100 border-0 shadow-sm">
-                                            <div class="card-header bg-sage text-white text-center">
+                                            <div class="card-header bg-ocean-gradient text-white text-center">
                                                 <h5 class="m-0">@Service.BeforeImageLabel</h5>
                                             </div>
                                             <div class="card-body p-0">
-                                                 <img src="@Service.BeforeImage" class="img-fluid w-100 h-100" style="object-fit:cover; min-height: 300px;" alt="@Service.BeforeImageLabel" />
+                                                 <img src="@Service.BeforeImage" class="img-fluid w-100 h-100" loading="lazy" decoding="async" style="object-fit:cover; min-height: 300px;" alt="@Service.BeforeImageLabel" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card h-100 border-0 shadow-sm">
-                                            <div class="card-header bg-sage text-white text-center">
+                                            <div class="card-header bg-ocean-gradient text-white text-center">
                                                 <h5 class="m-0">@Service.AfterImageLabel</h5>
                                             </div>
                                             <div class="card-body p-0">
-                                                <img src="@Service.AfterImage" class="img-fluid w-100 h-100" style="object-fit:cover; min-height: 300px;" alt="@Service.AfterImageLabel" />
+                                                <img src="@Service.AfterImage" class="img-fluid w-100 h-100" loading="lazy" decoding="async" style="object-fit:cover; min-height: 300px;" alt="@Service.AfterImageLabel" />
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                     <div class="col-12">
                                         <div class="card border-0 shadow-sm">
                                             <div class="card-body p-0">
-                                                <img src="@Service.BeforeImage" class="img-fluid w-100" style="object-fit:cover; max-height: 500px;" alt="@Service.Title" />
+                                                <img src="@Service.BeforeImage" class="img-fluid w-100" loading="lazy" decoding="async" style="object-fit:cover; max-height: 500px;" alt="@Service.Title" />
                                             </div>
                                         </div>
                                     </div>

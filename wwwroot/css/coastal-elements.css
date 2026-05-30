@@ -1,0 +1,577 @@
+﻿/* ========================================
+   ELEMENTI DECORATIVI COSTIERI
+   Per Oceanside Dental Centre
+   Versione Ottimizzata con effetti moderni
+   ======================================== */
+
+/* ========================================
+   WAVE DIVIDERS
+   ======================================== */
+
+/* Clinical Calm: the decorative coastal waves are retired in favour of
+   calm, airy section transitions. Hidden (not deleted) so existing markup
+   keeps validating and the change is fully reversible. */
+.wave-divider {
+    display: none;
+}
+
+.wave-divider-legacy {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: translateZ(0);
+    /* GPU acceleration */
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+    transform: translateZ(0);
+}
+
+.wave-divider .shape-fill {
+    fill: var(--color-ocean-blue);
+    transition: fill var(--transition-base);
+}
+
+/* Variante wave inversa */
+.wave-divider-bottom {
+    transform: rotate(180deg);
+}
+
+/* Wave per footer - più alta */
+.wave-footer {
+    position: absolute;
+    top: -59px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-footer svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+.wave-footer .shape-fill {
+    fill: var(--color-primary-text);
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero-ocean {
+    background-color: var(--hero-bg);
+    background-image:
+        radial-gradient(120% 120% at 85% 0%, rgba(43, 125, 212, 0.45) 0%, transparent 55%),
+        radial-gradient(100% 100% at 0% 100%, rgba(10, 58, 107, 0.6) 0%, transparent 60%);
+    color: var(--hero-text);
+    padding: clamp(4rem, 9vw, 7rem) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-ocean h1,
+.hero-ocean h2,
+.hero-ocean h3,
+.hero-ocean p {
+    position: relative;
+    z-index: 1;
+    color: var(--hero-text);
+}
+
+.hero-ocean .lead,
+.hero-ocean p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* ========================================
+   CARD CON EFFETTO GLASSMORPHISM
+   ======================================== */
+
+.card-ocean {
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    background: var(--card-surface);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.card-ocean::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-ocean-blue);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.card-ocean:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-coastal-light);
+}
+
+.card-ocean:hover::before {
+    opacity: 1;
+}
+
+.card-ocean .card-header {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-aqua-accent));
+    color: white;
+    border: none;
+    padding: 1.5rem;
+    font-weight: 600;
+}
+
+.card-ocean .card-body {
+    padding: 1.5rem;
+}
+
+/* ========================================
+   LISTE NEI CARD SERVICES
+   ======================================== */
+
+/* Ingrandimento testo liste per migliore leggibilità */
+.card .list-unstyled li {
+    font-size: 1.05rem;
+    /* Testo più grande */
+    line-height: 1.6;
+    /* Spaziatura verticale migliore */
+    font-weight: 400;
+}
+
+/* Ingrandimento icone check per proporzione */
+.card .list-unstyled .material-icons {
+    font-size: 22px !important;
+    /* Più grande per bilanciare col testo */
+    vertical-align: middle;
+}
+
+/* Link nelle liste */
+.card .list-unstyled a {
+    font-size: inherit;
+    font-weight: 500;
+}
+
+
+/* Card con effetto glassmorphism */
+.card-glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.card-glass:hover {
+    background: rgba(255, 255, 255, 0.98);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ========================================
+   SEZIONI CON SFONDO
+   ======================================== */
+
+.section-coastal {
+    background-color: var(--section-tint);
+    position: relative;
+}
+
+.section-sand {
+    background-color: var(--section-muted);
+    position: relative;
+}
+
+/* ========================================
+   PULSANTI DECORATIVI
+   ======================================== */
+
+.btn-ocean {
+    background: var(--btn-primary-bg);
+    border: 1px solid transparent;
+    color: var(--btn-primary-text);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-ocean:hover {
+    background: var(--btn-primary-bg-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: var(--btn-primary-text);
+}
+
+.btn-ocean:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-ocean:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-glow);
+}
+
+/* On dark hero bands, the primary CTA inverts to white for contrast */
+.hero-ocean .btn-ocean,
+.hero-ocean .btn-light {
+    background: var(--color-white);
+    color: var(--color-ocean-deep);
+}
+
+.hero-ocean .btn-ocean:hover,
+.hero-ocean .btn-light:hover {
+    background: var(--color-bg-tint);
+    color: var(--color-ocean-deep);
+}
+
+.hero-ocean .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--color-white);
+}
+
+.hero-ocean .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+/* ========================================
+   BADGE DECORATIVI
+   ======================================== */
+
+.badge-ocean {
+    background-color: var(--color-bg-tint);
+    color: var(--color-ocean-dark);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color var(--transition-fast);
+}
+
+.badge-ocean:hover {
+    background-color: var(--primitive-blue-100);
+}
+
+.badge-coastal {
+    background-color: var(--color-coastal-light);
+    color: var(--color-primary-text);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+}
+
+/* ========================================
+   LINEE DECORATIVE
+   ======================================== */
+
+.divider-wave-line {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--color-ocean-blue) 20%,
+            var(--color-coastal-light) 50%,
+            var(--color-ocean-blue) 80%,
+            transparent 100%);
+    margin: 2rem 0;
+}
+
+.section-separator {
+    width: 48px;
+    height: 3px;
+    background: var(--color-ocean-blue);
+    margin: 0 auto 1.5rem;
+    border-radius: var(--radius-full);
+}
+
+/* ========================================
+   ICONE CON SFONDO OCEAN
+   ======================================== */
+
+.icon-ocean {
+    width: 56px;
+    height: 56px;
+    background: var(--medallion-bg);
+    border-radius: var(--radius-lg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--medallion-fg);
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    transition: transform var(--transition-base), background-color var(--transition-base);
+}
+
+.icon-ocean:hover {
+    transform: translateY(-2px);
+    background: var(--primitive-blue-100);
+}
+
+/* Compact variant used in testimonial author rows */
+.icon-ocean.icon-ocean-sm {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   TESTIMONIANZE/QUOTE
+   ======================================== */
+
+.quote-ocean {
+    padding-left: 0;
+    margin: 0 0 1.5rem;
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-primary-text);
+    position: relative;
+}
+
+.quote-ocean::before {
+    content: '\201C';
+    display: block;
+    font-size: 3rem;
+    line-height: 0.6;
+    color: var(--color-coastal-light);
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   ANIMAZIONI
+   ======================================== */
+
+@keyframes subtle-wave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes subtle-shimmer {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse-separator {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scaleX(1.1);
+    }
+}
+
+/* Hero eyebrow — small uppercase kicker above the H1 */
+.hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-coastal-light);
+    margin: 0;
+}
+
+/* .animate-wave retired in Clinical Calm (no decorative motion) */
+.animate-wave {
+    animation: none;
+}
+
+/* ========================================
+   NAVBAR ENHANCEMENT
+   ======================================== */
+
+.nav-link {
+    position: relative;
+    transition: color var(--transition-base);
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--color-ocean-blue);
+    transition: width var(--transition-base);
+    border-radius: var(--radius-full);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* ========================================
+   SERVIZI GRID CON HOVER EFFECT
+   ======================================== */
+
+.service-grid-item {
+    background: var(--card-surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    border: 1px solid var(--card-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+}
+
+.service-grid-item:hover {
+    border-color: var(--color-coastal-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-grid-item>* {
+    position: relative;
+    z-index: 1;
+}
+
+.service-grid-item i,
+.service-grid-item .icon {
+    color: var(--color-ocean-blue);
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    transition: transform var(--transition-base);
+}
+
+.service-grid-item:hover i,
+.service-grid-item:hover .icon {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   OVERLAY SCURO PER IMMAGINI
+   ======================================== */
+
+.image-overlay-ocean {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.image-overlay-ocean::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 58, 107, 0.55);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.image-overlay-ocean:hover::after {
+    opacity: 1;
+}
+
+.image-overlay-ocean img {
+    transition: transform var(--transition-slow);
+}
+
+.image-overlay-ocean:hover img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 992px) {
+
+    .wave-divider svg,
+    .wave-footer svg {
+        height: 40px;
+    }
+
+    .service-grid-item {
+        padding: 1.5rem;
+    }
+
+    .icon-ocean {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-ocean {
+        padding: 3rem 0;
+    }
+
+    .btn-ocean {
+        padding: 0.625rem 1.5rem;
+    }
+
+    .quote-ocean::before {
+        font-size: 2rem;
+        top: -10px;
+    }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* will-change is only promoted on hover (just before the transition runs).
+   Leaving it permanently on many elements forces the browser to keep extra
+   compositor layers alive, wasting memory — so we scope it to :hover. */
+.hover-lift:hover,
+.service-grid-item:hover,
+.card-ocean:hover,
+.btn-ocean:hover {
+    will-change: transform;
+}
+
+.nav-link:hover::after,
+.service-grid-item:hover::before,
+.card-ocean:hover::before {
+    will-change: width, opacity;
+}
