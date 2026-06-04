@@ -2,33 +2,65 @@
 
 <PageTitle>Home - Oceanside Dental Centre</PageTitle>
 
-<!-- Hero Section con Gradient Ocean -->
-<section class="hero-ocean">
-    <div class="container text-center">
-        <p class="hero-eyebrow mb-3">Parksville, British Columbia</p>
-        <h1 class="display-4 mb-3">Exceptional dental care, delivered with calm and precision</h1>
-        <p class="lead fs-5 mb-4 mx-auto" style="max-width: 40rem;">Family and cosmetic dentistry in the heart of Oceanside — where modern technology meets a gentle, patient-first approach.</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="contact" class="btn btn-ocean btn-lg">Book an Appointment</a>
-            <a href="clinic" class="btn btn-outline-light btn-lg">Explore the Clinic</a>
+<!-- Hero Section — split layout -->
+<section class="hero-ocean hero-split">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <p class="hero-eyebrow">Parksville, British Columbia</p>
+                <h1 class="display-4 mb-3">Exceptional dental care, delivered with calm and precision</h1>
+                <p class="lead fs-5 mb-4">Family and cosmetic dentistry in the heart of Oceanside — where modern technology meets a gentle, patient-first approach.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="contact" class="btn btn-ocean btn-lg">Book an Appointment</a>
+                    <a href="clinic" class="btn btn-outline-light btn-lg">Explore the Clinic</a>
+                </div>
+                <ul class="hero-trust">
+                    <li><span class="material-icons" aria-hidden="true">verified</span> Now accepting new patients</li>
+                    <li><span class="material-icons" aria-hidden="true">schedule</span> Direct insurance billing</li>
+                    <li><span class="material-icons" aria-hidden="true">favorite</span> Gentle, family-friendly care</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-media">
+                    <img src="images/home-hero.jpg" alt="Welcoming treatment room at Oceanside Dental Centre"
+                         width="1024" height="473" decoding="async" fetchpriority="high" />
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Wave Divider -->
-<div class="wave-divider">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
-</div>
+<!-- Stat band — social proof -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="stat-band">
+            <div class="stat-item">
+                <div class="stat-value">7+</div>
+                <div class="stat-label">Years serving Oceanside</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5,000+</div>
+                <div class="stat-label">Patients cared for</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Treatments offered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4.9★</div>
+                <div class="stat-label">Average patient rating</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Welcome Section -->
 <section class="py-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="section-separator" style="margin-left: 0;"></div>
-                <h2 class="display-5 mb-4">Caring for Smiles Since Years</h2>
+                <p class="section-eyebrow">Our Practice</p>
+                <h2 class="display-5 mb-4">A calm, modern home for your family's smiles</h2>
                 <p class="lead text-muted mb-4">
                     At Oceanside Dental Centre, we combine modern dental technology with compassionate care
                     to ensure every visit is comfortable and effective.
@@ -68,7 +100,7 @@
 <section class="section-coastal py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <div class="section-separator"></div>
+            <p class="section-eyebrow">What We Offer</p>
             <h2 class="display-5 mb-3">Our Dental Services</h2>
             <p class="lead text-muted">Comprehensive care for healthy, beautiful smiles</p>
         </div>
@@ -151,48 +183,56 @@
 <section class="py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <div class="section-separator"></div>
-            <h2 class="display-5 mb-3">Why Choose Oceanside Dental?</h2>
+            <p class="section-eyebrow">Why Oceanside</p>
+            <h2 class="display-5 mb-3">Care you can trust, comfort you can feel</h2>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="text-center">
-                    <div class="icon-ocean mx-auto">
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <div class="icon-ocean">
                         <i class="material-icons" aria-hidden="true">verified</i>
                     </div>
-                    <h5 class="fw-medium">Experienced Team</h5>
-                    <p class="text-muted">Highly qualified professionals dedicated to your care</p>
+                    <div>
+                        <h5 class="fw-medium mb-1">Experienced Team</h5>
+                        <p class="text-muted mb-0">Highly qualified professionals dedicated to your care.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="text-center">
-                    <div class="icon-ocean mx-auto">
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <div class="icon-ocean">
                         <i class="material-icons" aria-hidden="true">medical_services</i>
                     </div>
-                    <h5 class="fw-medium">Modern Technology</h5>
-                    <p class="text-muted">State-of-the-art equipment including laser therapy</p>
+                    <div>
+                        <h5 class="fw-medium mb-1">Modern Technology</h5>
+                        <p class="text-muted mb-0">State-of-the-art equipment, including laser therapy.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="text-center">
-                    <div class="icon-ocean mx-auto">
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <div class="icon-ocean">
                         <i class="material-icons" aria-hidden="true">favorite</i>
                     </div>
-                    <h5 class="fw-medium">Patient Comfort</h5>
-                    <p class="text-muted">Gentle care in a relaxing coastal environment</p>
+                    <div>
+                        <h5 class="fw-medium mb-1">Patient Comfort</h5>
+                        <p class="text-muted mb-0">Gentle care in a calm, welcoming environment.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="text-center">
-                    <div class="icon-ocean mx-auto">
+            <div class="col-md-6">
+                <div class="feature-item">
+                    <div class="icon-ocean">
                         <i class="material-icons" aria-hidden="true">family_restroom</i>
                     </div>
-                    <h5 class="fw-medium">Family Friendly</h5>
-                    <p class="text-muted">Comprehensive care for patients of all ages</p>
+                    <div>
+                        <h5 class="fw-medium mb-1">Family Friendly</h5>
+                        <p class="text-muted mb-0">Comprehensive care for patients of all ages.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,7 +243,7 @@
 <section class="section-sand py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <div class="section-separator"></div>
+            <p class="section-eyebrow">Patient Stories</p>
             <h2 class="display-5 mb-3">What Our Patients Say</h2>
         </div>
 
@@ -284,13 +324,6 @@
         </div>
     </div>
 </section>
-
-<!-- Wave Divider Bottom -->
-<div class="wave-divider wave-divider-bottom">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
-</div>
 
 <!-- Payment Methods & Info -->
 <section class="py-5 bg-white">

@@ -4,8 +4,8 @@
     {
       "name": "dental",
       "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "-c", "Debug"],
-      "port": 5000
+      "runtimeArgs": ["run", "-c", "Debug", "--launch-profile", "http"],
+      "port": 5183
     }
   ]
 }

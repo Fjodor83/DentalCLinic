@@ -544,13 +544,11 @@ a:focus-visible {
    ======================================== */
 
 code {
-    color: #c02d76;
-code {
-    color: #c02d76;
+    color: var(--color-ocean-dark);
     font-family: 'Courier New', monospace;
     font-size: 0.875em;
     padding: 0.2em 0.4em;
-    background-color: rgba(0, 119, 190, 0.05);
+    background-color: var(--color-bg-tint);
     border-radius: 4px;
 }
 
