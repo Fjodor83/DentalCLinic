@@ -639,6 +639,13 @@
         height: 40px;
     }
 
+    /* Hero image stacks below the copy on tablet/mobile — a tall 4/5 portrait
+       eats most of the viewport and over-crops the landscape photo, so switch
+       to a shorter, more natural landscape ratio. */
+    .hero-media {
+        aspect-ratio: 16 / 10;
+    }
+
     .service-grid-item {
         padding: 1.5rem;
     }

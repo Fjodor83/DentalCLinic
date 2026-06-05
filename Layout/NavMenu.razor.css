@@ -24,6 +24,26 @@
 }
 
 /* ========================================
+   MOBILE LOGO CALIBRATION
+   On the collapsed (hamburger) layout the full 224×100 logo towers over the
+   ~53px toggler and inflates the header. Scale it to sit in harmony with the
+   menu button while keeping the original aspect ratio. Desktop (xl+) keeps
+   the full-size logo.
+   ======================================== */
+@media (max-width: 1199.98px) {
+    .navbar-brand img {
+        height: 56px;
+        width: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-brand img {
+        height: 50px;
+    }
+}
+
+/* ========================================
    NAVBAR TOGGLER (Mobile)
    ======================================== */
 
@@ -105,7 +125,7 @@
    MOBILE MENU (Collapsed)
    ======================================== */
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
     .navbar-collapse {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
@@ -149,7 +169,7 @@
    DESKTOP ENHANCEMENTS
    ======================================== */
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .navbar-nav {
         gap: 0.25rem;
     }
