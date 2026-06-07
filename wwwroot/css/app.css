@@ -104,13 +104,16 @@ h1 {
     color: var(--color-secondary-text);
 }
 
-/* Visible focus ring for the heading that receives focus on route change
-   (App.razor uses <FocusOnNavigate Selector="h1" />). Without this the
-   programmatic focus would be invisible because of `outline: none` above. */
-h1:focus-visible {
-    outline: 3px solid var(--color-coastal-light);
-    outline-offset: 4px;
-    border-radius: var(--radius-sm);
+/* The page <h1> receives programmatic focus on every load/navigation via
+   App.razor's <FocusOnNavigate Selector="h1" />, which marks it tabindex="-1".
+   Because of that tabindex it can never be reached by keyboard Tab, so the only
+   focus it ever gets is this scripted one — and a focus ring there just flashes
+   an outline on the heading at every page load / hard refresh. Suppress the
+   ring (covers :focus and :focus-visible). Screen-reader focus management is
+   unaffected: focus still moves, only the visual outline is removed. */
+h1[tabindex="-1"]:focus,
+h1[tabindex="-1"]:focus-visible {
+    outline: none;
 }
 
 h2 {
@@ -409,6 +412,14 @@ a:focus-visible {
     text-align: justify;
 }
 
+/* On narrow screens justified text opens ugly word-spacing "rivers"; fall
+   back to a clean left edge for readability on phones. */
+@media (max-width: 576px) {
+    .text-justify {
+        text-align: left;
+    }
+}
+
 /* ========================================
    MATERIAL ICON SIZE SCALE
    Replaces ad-hoc inline font-size on icons so sizing stays tokenised
@@ -544,13 +555,11 @@ a:focus-visible {
    ======================================== */
 
 code {
-    color: #c02d76;
-code {
-    color: #c02d76;
+    color: var(--color-ocean-dark);
     font-family: 'Courier New', monospace;
     font-size: 0.875em;
     padding: 0.2em 0.4em;
-    background-color: rgba(0, 119, 190, 0.05);
+    background-color: var(--color-bg-tint);
     border-radius: 4px;
 }
 
@@ -570,6 +579,16 @@ code {
 
     h2 {
         font-size: 1.75rem;
+    }
+}
+
+/* Phones: tighten the generous 3rem (py-5) section rhythm so the page scrolls
+   less and feels more compact. Scoped to .main-content so the footer and
+   tablet/desktop spacing stay untouched. */
+@media (max-width: 576px) {
+    .main-content .py-5 {
+        padding-top: 2.25rem !important;
+        padding-bottom: 2.25rem !important;
     }
 }
 

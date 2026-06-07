@@ -411,6 +411,115 @@
     margin: 0;
 }
 
+/* Section eyebrow — same kicker on light sections */
+.section-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-ocean-blue);
+    margin: 0 0 0.75rem;
+}
+
+/* ========================================
+   HERO — SPLIT LAYOUT (premium)
+   ======================================== */
+.hero-split {
+    text-align: left;
+}
+
+.hero-split .hero-eyebrow {
+    margin-bottom: 1rem;
+}
+
+.hero-media {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    aspect-ratio: 4 / 5;
+}
+
+.hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Trust pills under the hero CTAs */
+.hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2rem;
+    list-style: none;
+    padding: 0;
+}
+
+.hero-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-trust .material-icons {
+    font-size: 1.1rem;
+    color: var(--color-coastal-light);
+}
+
+/* ========================================
+   STAT BAND — social proof strip
+   ======================================== */
+.stat-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 0.5rem 0.5rem;
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-ocean-blue);
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+    .stat-band {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1rem;
+    }
+}
+
+/* Feature row — icon + text, left aligned (Why Choose Us) */
+.feature-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.feature-item .icon-ocean {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
 /* .animate-wave retired in Clinical Calm (no decorative motion) */
 .animate-wave {
     animation: none;
@@ -528,6 +637,13 @@
     .wave-divider svg,
     .wave-footer svg {
         height: 40px;
+    }
+
+    /* Hero image stacks below the copy on tablet/mobile — a tall 4/5 portrait
+       eats most of the viewport and over-crops the landscape photo, so switch
+       to a shorter, more natural landscape ratio. */
+    .hero-media {
+        aspect-ratio: 16 / 10;
     }
 
     .service-grid-item {
