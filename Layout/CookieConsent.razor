@@ -1,0 +1,57 @@
+@inject IJSRuntime JSRuntime
+
+@if (ShowBanner)
+{
+    <div class="cookie-banner shadow-lg">
+        <div class="container py-3">
+            <div class="row align-items-center">
+                <div class="col-md-8 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <i class="ti ti-cookie fs-2 text-ocean me-3"></i>
+                        <div>
+                            <h5 class="mb-1 text-dark">We value your privacy</h5>
+                            <p class="mb-0 text-muted small">
+                                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
+                                By clicking "Accept", you consent to our use of cookies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end text-center">
+                    <button class="btn btn-outline-ocean btn-sm me-2" @onclick="DeclineCookies">Decline</button>
+                    <button class="btn btn-ocean btn-sm" @onclick="AcceptCookies">Accept All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool ShowBanner { get; set; } = false;
+    private const string CookieStorageKey = "dental_cookie_consent";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var consentStr = await JSRuntime.InvokeAsync<string>("localStorage.getItem", CookieStorageKey);
+            if (string.IsNullOrEmpty(consentStr))
+            {
+                ShowBanner = true;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task AcceptCookies()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", CookieStorageKey, "accepted");
+        ShowBanner = false;
+    }
+
+    private async Task DeclineCookies()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", CookieStorageKey, "declined");
+        ShowBanner = false;
+    }
+}

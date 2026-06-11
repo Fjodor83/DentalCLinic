@@ -36,6 +36,116 @@
     <link href="DentalCLinic.styles.css" rel="stylesheet" />
     
     <script type="importmap"></script>
+
+    <!-- ============================================================
+         JSON-LD Structured Data — Schema.org
+         Dentist + WebSite markup per Google Knowledge Panel,
+         rich snippets, orari e valutazioni nei risultati di ricerca.
+         ============================================================ -->
+
+    <!-- Schema 1: Dentist (LocalBusiness) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "@id": "https://www.oceansidedentalcentre.com/#organization",
+      "name": "Oceanside Dental Centre",
+      "alternateName": "Oceanside Dental",
+      "description": "Family and cosmetic dentistry in Parksville, BC. We offer dental cleanings, implants, crowns, whitening, laser therapy and more. Now accepting new patients.",
+      "url": "https://www.oceansidedentalcentre.com",
+      "telephone": "+1-250-586-4404",
+      "email": "info@oceansidedentalcentre.com",
+      "priceRange": "$$",
+      "currenciesAccepted": "CAD",
+      "paymentAccepted": "Cash, Credit Card, Debit Card, Insurance",
+      "image": [
+        "https://www.oceansidedentalcentre.com/images/home-hero.jpg",
+        "https://www.oceansidedentalcentre.com/images/Logo.png"
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.oceansidedentalcentre.com/images/Logo.png",
+        "width": 224,
+        "height": 100
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "175 Corfield St",
+        "addressLocality": "Parksville",
+        "addressRegion": "BC",
+        "postalCode": "V9P 1R9",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.3131,
+        "longitude": -124.3134
+      },
+      "hasMap": "https://maps.google.com/?q=175+Corfield+St,+Parksville,+BC",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "medicalSpecialty": [
+        "Dentistry",
+        "Cosmetic Dentistry",
+        "Pediatric Dentistry"
+      ],
+      "availableService": [
+        { "@type": "MedicalProcedure", "name": "Dental Cleaning & Check-up" },
+        { "@type": "MedicalProcedure", "name": "Dental Implants" },
+        { "@type": "MedicalProcedure", "name": "Teeth Whitening (ZOOM Laser)" },
+        { "@type": "MedicalProcedure", "name": "Dental Crowns & Bridges" },
+        { "@type": "MedicalProcedure", "name": "Root Canal Therapy" },
+        { "@type": "MedicalProcedure", "name": "Laser Therapy" },
+        { "@type": "MedicalProcedure", "name": "Dental Veneers" },
+        { "@type": "MedicalProcedure", "name": "Pit & Fissure Sealants" },
+        { "@type": "MedicalProcedure", "name": "TMJ / Jaw Pain Treatment" },
+        { "@type": "MedicalProcedure", "name": "Children's Dentistry" },
+        { "@type": "MedicalProcedure", "name": "Senior's Dentistry" },
+        { "@type": "MedicalProcedure", "name": "Oral Cancer Screening" },
+        { "@type": "MedicalProcedure", "name": "Tooth Extractions" },
+        { "@type": "MedicalProcedure", "name": "White Fillings (Composite Restorations)" }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Parksville" },
+        { "@type": "City", "name": "Qualicum Beach" },
+        { "@type": "City", "name": "Nanoose Bay" },
+        { "@type": "AdministrativeArea", "name": "Oceanside, British Columbia" }
+      ],
+      "knowsLanguage": ["en"],
+      "sameAs": [
+        "https://www.facebook.com/oceansidedentalcentre"
+      ]
+    }
+    </script>
+
+    <!-- Schema 2: WebSite (Sitelinks search) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.oceansidedentalcentre.com/#website",
+      "url": "https://www.oceansidedentalcentre.com",
+      "name": "Oceanside Dental Centre",
+      "description": "Family & cosmetic dentistry in Parksville, BC",
+      "inLanguage": "en-CA",
+      "publisher": {
+        "@id": "https://www.oceansidedentalcentre.com/#organization"
+      }
+    }
+    </script>
 </head>
 
 
