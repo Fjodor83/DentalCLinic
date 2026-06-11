@@ -1,7 +1,34 @@
-/* ========================================
-   MAIN LAYOUT - OCEANSIDE DENTAL CENTRE
-   Modern Layout with Enhanced Visual Effects
-   ======================================== */
+/* ============================================================
+   MAIN LAYOUT — CSS isolation (MainLayout.razor.css)
+   ============================================================ */
+
+/* ============================================================
+   SKIP LINK (accessibilità tastiera)
+   ============================================================ */
+
+.skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: calc(var(--z-fixed) + 10);
+    padding: 0.5rem 1rem;
+    background: var(--color-ocean-blue);
+    color: var(--color-on-accent);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform var(--motion-fast) var(--motion-easing);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
 
 .page {
     position: relative;
@@ -10,76 +37,101 @@
     min-height: 100vh;
 }
 
-/* ========================================
+/* ============================================================
    HEADER
-   ======================================== */
+   ============================================================ */
 
 .site-header {
     background-color: var(--header-bg);
-    border-bottom: 1px solid var(--header-border);
+    border-bottom: 0.5px solid var(--header-border);
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-    transition: box-shadow var(--transition-base);
+    transition: box-shadow var(--motion-base) var(--motion-easing),
+                background-color var(--motion-base) var(--motion-easing);
 }
 
-/* Subtle elevation once the page scrolls under the sticky header */
 .site-header.is-scrolled {
     box-shadow: var(--shadow-sm);
 }
 
-/* ========================================
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* ============================================================
    MAIN CONTENT
-   ======================================== */
+   ============================================================ */
 
 .main-content {
     flex: 1;
     position: relative;
+    /* Rimossa l'animazione aggressiva contentFadeIn su tutti i figli */
 }
 
-/* ========================================
+/* ============================================================
    FOOTER
-   ======================================== */
+   ============================================================ */
 
 .site-footer {
     background-color: var(--footer-bg);
     color: var(--footer-text);
     position: relative;
-    padding: 4rem 0 2rem;
+    padding: 3.5rem 0 1.75rem;
 }
 
-/* Typography nel footer */
-.site-footer h5 {
+/* Semantica heading nel footer: usiamo h2 con stile visivo da h5 */
+.footer-heading {
     color: var(--footer-heading);
     position: relative;
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9375rem;    /* 15px — visivo, non h1-h6 scalato */
     letter-spacing: 0.02em;
+    font-family: var(--font-primary);  /* usa sans nel footer per leggibilità */
 }
 
-/* Short accent under each footer heading for clearer hierarchy on the dark band */
-.site-footer h5::after {
+/* Accento sotto il titolo footer */
+.footer-heading::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 32px;
+    width: 28px;
     height: 2px;
     background: var(--color-coastal-light);
-    border-radius: var(--radius-full);
+    border-radius: var(--border-radius-full);
 }
 
-.site-footer h6 {
+/* Orari: definition list semantica */
+.footer-hours {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+}
+
+.footer-hours dt {
+    font-weight: var(--font-weight-medium);
     color: var(--footer-heading);
     opacity: 0.9;
+    font-size: var(--text-sm);
+}
+
+.footer-hours dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--footer-text);
 }
 
 /* Links nel footer */
 .site-footer a {
     color: var(--footer-text);
-    transition: color var(--transition-fast);
+    transition: color var(--motion-fast) var(--motion-easing);
     display: inline-block;
 }
 
@@ -87,125 +139,48 @@
     color: var(--footer-heading);
 }
 
+.site-footer a:focus-visible {
+    outline: 2px solid var(--color-coastal-light);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
 /* Liste nel footer */
 .site-footer ul {
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
 .site-footer ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
-/* ========================================
-   SOCIAL ICONS
-   ======================================== */
-
-.site-footer .social-icons {
-    display: flex;
-    gap: 0.5rem;
+/* Separatore bottom */
+.footer-bottom {
+    border-top: 0.5px solid var(--footer-line);
 }
 
-.site-footer .social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--footer-line);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
+.footer-bottom small {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.55);
 }
 
-.site-footer .social-icons a::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: var(--color-ocean-blue);
-    transform: translate(-50%, -50%);
-    transition: width 0.4s, height 0.4s;
-    z-index: 0;
-}
 
-.site-footer .social-icons a:hover::before {
-    width: 100%;
-    height: 100%;
-}
 
-.site-footer .social-icons a:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: var(--shadow-md);
-}
-
-.site-footer .social-icons a i,
-.site-footer .social-icons a svg {
-    position: relative;
-    z-index: 1;
-}
-
-/* ========================================
-   PAYMENT METHODS
-   ======================================== */
-
-.site-footer .badge {
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-    background-color: #28a745;
-}
-
-.site-footer .badge:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-sm);
-}
-
-.site-footer img {
-    transition: all var(--transition-base);
-    filter: brightness(1) contrast(1);
-}
-
-.site-footer img:hover {
-    transform: scale(1.1);
-    filter: brightness(1.1) contrast(1.05);
-}
-
-/* ========================================
-   FOOTER BOTTOM (Copyright)
-   ======================================== */
-
-.site-footer .border-top {
-    border-color: var(--footer-line) !important;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 768px) {
     .site-footer {
-        padding: 2.25rem 0 1.5rem;
+        padding: 2.25rem 0 1.25rem;
     }
 
-    .site-footer h5 {
-        font-size: 1.05rem;
-        margin-bottom: 0.75rem;
-    }
-
-    /* Stacked columns: consistent left alignment (headings + links + text) and
-       a hairline divider between sections for clear visual separation. */
     .site-footer .col-md-4 {
         padding-bottom: 1.5rem;
         margin-bottom: 1.5rem;
-        border-bottom: 1px solid var(--footer-line);
+        border-bottom: 0.5px solid var(--footer-line);
     }
 
     .site-footer .col-md-4:last-of-type {
@@ -214,68 +189,31 @@
     }
 }
 
-/* ========================================
-   ANIMATIONS
-   ======================================== */
-
-/* Fade in animation per il contenuto */
-.main-content>* {
-    animation: contentFadeIn 0.5s ease-out;
-}
-
-@keyframes contentFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ========================================
-   ACCESSIBILITY
-   ======================================== */
-
-/* Focus states migliorati */
-.site-footer a:focus-visible {
-    outline: 2px solid var(--color-coastal-light);
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-    .site-footer a,
-    .site-footer img,
-    .site-footer .social-icons a,
-    .main-content>* {
-        animation: none;
-        transition: none;
-    }
-}
-
-/* ========================================
-   DARK MODE SUPPORT (Future Enhancement)
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-    /* Placeholder per futuro supporto dark mode */
-    /* .site-header { ... } */
-}
-
-/* ========================================
-   PRINT STYLES
-   ======================================== */
+/* ============================================================
+   PRINT
+   ============================================================ */
 
 @media print {
-
     .site-header,
-    .site-footer {
-        box-shadow: none;
-        border: none;
+    .site-footer,
+    .toast-region {
+        display: none !important;
+    }
+
+    .main-content {
+        padding-top: 0;
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header,
+    .site-footer a,
+    .skip-link {
+        animation: none;
+        transition: none;
     }
 }

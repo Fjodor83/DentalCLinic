@@ -1,48 +1,94 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
 <div class="page">
-    <header class="site-header py-3">
+
+    <a href="#main-content" class="skip-link sr-only sr-only-focusable">
+        Vai al contenuto principale
+    </a>
+
+    <header class="site-header py-2" role="banner">
         <div class="container">
-            <NavMenu />
+            <div class="header-inner">
+                <NavMenu />
+            </div>
         </div>
     </header>
 
-    <main class="main-content">
+    <main id="main-content" class="main-content" role="main" aria-label="Contenuto principale">
         @Body
     </main>
 
-    <footer class="site-footer mt-auto">
+    <footer class="site-footer mt-auto" role="contentinfo">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>Contact Details</h5>
-                    <p>
+                    <h2 class="footer-heading">Contatti</h2>
+                    <address>
                         <strong>Oceanside Dental Centre</strong><br />
-                        175 Corfield St <br />
+                        175 Corfield St<br />
                         Parksville, BC, V9P 2G1<br />
-                        Phone: 250.586.4404<br />
-                        Email: info@oceansidedentalcentre.com
-                    </p>
+                        <a href="tel:2505864404" aria-label="Chiama il numero 250 586 4404">250.586.4404</a><br />
+                        <a href="mailto:info@oceansidedentalcentre.com">info@oceansidedentalcentre.com</a>
+                    </address>
                 </div>
                 <div class="col-md-4">
-                     <h5>Quick Links</h5>
-                     <ul class="list-unstyled">
-                         <li><a href="">Home</a></li>
-                         <li><a href="services">Services</a></li>
-                         <li><a href="clinic">Our Clinic</a></li>
-                         <li><a href="faq">FAQ</a></li>
-                         <li><a href="contact">Contact Us</a></li>
-                     </ul>
+                    <h2 class="footer-heading">Link rapidi</h2>
+                    <nav aria-label="Footer navigation">
+                        <ul class="list-unstyled">
+                            <li><a href="">Home</a></li>
+                            <li><a href="services">Servizi</a></li>
+                            <li><a href="clinic">La clinica</a></li>
+                            <li><a href="faq">FAQ</a></li>
+                            <li><a href="contact">Contattaci</a></li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="col-md-4">
-                    <h5>Office Hours</h5>
-                    <p>Mon - Fri: 8:00 AM - 4:00 PM<br>Sat - Sun: Closed</p>
+                    <h2 class="footer-heading">Orari di apertura</h2>
+                    <dl class="footer-hours">
+                        <dt>Lun – Ven</dt>
+                        <dd>8:00 – 16:00</dd>
+                        <dt>Sab – Dom</dt>
+                        <dd>Chiuso</dd>
+                    </dl>
                 </div>
             </div>
-            <div class="row pt-3 mt-3 border-top">
+            <div class="row pt-3 mt-3 footer-bottom">
                 <div class="col-12 text-center">
-                    &copy; @DateTime.Now.Year Oceanside Dental Centre. All rights reserved.
+                    <small>&copy; @DateTime.Now.Year Oceanside Dental Centre. Tutti i diritti riservati.</small>
                 </div>
             </div>
         </div>
     </footer>
+
+    <ToastContainer />
 </div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Aggiunge classe is-scrolled all'header quando la pagina scrolla
+            await JS.InvokeVoidAsync("eval", @"
+                (function() {
+                    var header = document.querySelector('.site-header');
+                    if (!header) return;
+                    function update() {
+                        header.classList.toggle('is-scrolled', window.scrollY > 8);
+                    }
+                    window.addEventListener('scroll', update, { passive: true });
+                    update();
+                })();
+            ");
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        // Cleanup se necessario
+        await ValueTask.CompletedTask;
+    }
+}

@@ -1,0 +1,164 @@
+@inject ToastService ToastService
+@implements IDisposable
+
+@* 
+    WCAG 2.1 AA:
+    - role="status" aria-live="polite" per notifiche non critiche
+    - role="alert"  aria-live="assertive" per errori urgenti
+    - Ogni toast ha un id univoco per accessibilità
+    
+    Position: usa flusso normale (non fixed) come da spec enterprise.
+    Il contenitore è posizionato alla fine del layout, fuori dal main.
+*@
+
+<div class="toast-region"
+     aria-label="Notifiche"
+     id="toast-region">
+
+    @foreach (var toast in ToastService.Toasts)
+    {
+        <div class="toast-item toast-item--@toast.Type.ToString().ToLowerInvariant() @(IsEntering(toast.Id) ? "toast-item--enter" : "")"
+             role="@(toast.Type == ToastType.Error ? "alert" : "status")"
+             aria-live="@(toast.Type == ToastType.Error ? "assertive" : "polite")"
+             aria-atomic="true"
+             id="toast-@toast.Id">
+
+            <div class="toast-item__icon" aria-hidden="true">
+                @switch (toast.Type)
+                {
+                    case ToastType.Success:
+                        <!-- Tabler: circle-check -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        break;
+                    case ToastType.Error:
+                        <!-- Tabler: circle-x -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="m15 9-6 6M9 9l6 6" />
+                        </svg>
+                        break;
+                    case ToastType.Warning:
+                        <!-- Tabler: alert-triangle -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 9v4M12 17h.01" />
+                            <path d="M10.363 3.591 2.257 17.125a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636-2.87L13.637 3.59a1.914 1.914 0 0 0-3.274 0z" />
+                        </svg>
+                        break;
+                    default:
+                        <!-- Tabler: info-circle -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M12 8h.01M11 12h1v4h1" />
+                        </svg>
+                        break;
+                }
+            </div>
+
+            <div class="toast-item__content">
+                <p class="toast-item__title">@toast.Title</p>
+                @if (!string.IsNullOrWhiteSpace(toast.Body))
+                {
+                    <p class="toast-item__body">@toast.Body</p>
+                }
+            </div>
+
+            <button class="toast-item__close"
+                    @onclick="() => Dismiss(toast.Id)"
+                    aria-label="Chiudi notifica: @toast.Title"
+                    type="button">
+                <!-- Tabler: x -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    }
+</div>
+
+@code {
+    private readonly HashSet<string> _entering = new();
+    private readonly Dictionary<string, CancellationTokenSource> _timers = new();
+
+    protected override void OnInitialized()
+    {
+        ToastService.OnChanged += HandleChanged;
+    }
+
+    private void HandleChanged()
+    {
+        InvokeAsync(async () =>
+        {
+            StateHasChanged();
+
+            // Schedula auto-dismiss per i nuovi toast
+            foreach (var toast in ToastService.Toasts)
+            {
+                if (!_timers.ContainsKey(toast.Id))
+                {
+                    _entering.Add(toast.Id);
+                    StateHasChanged();
+
+                    // Rimuovi classe entering dopo la transizione
+                    await Task.Delay(10);
+                    _entering.Remove(toast.Id);
+                    StateHasChanged();
+
+                    // Auto-dismiss
+                    var cts = new CancellationTokenSource();
+                    _timers[toast.Id] = cts;
+                    _ = AutoDismiss(toast.Id, toast.DurationMs, cts.Token);
+                }
+            }
+        });
+    }
+
+    private async Task AutoDismiss(string id, int delayMs, CancellationToken ct)
+    {
+        try
+        {
+            await Task.Delay(delayMs, ct);
+            if (!ct.IsCancellationRequested)
+                Dismiss(id);
+        }
+        catch (TaskCanceledException) { }
+    }
+
+    private void Dismiss(string id)
+    {
+        if (_timers.TryGetValue(id, out var cts))
+        {
+            cts.Cancel();
+            cts.Dispose();
+            _timers.Remove(id);
+        }
+        _entering.Remove(id);
+        ToastService.Dismiss(id);
+        InvokeAsync(StateHasChanged);
+    }
+
+    private bool IsEntering(string id) => _entering.Contains(id);
+
+    public void Dispose()
+    {
+        ToastService.OnChanged -= HandleChanged;
+        foreach (var cts in _timers.Values)
+        {
+            cts.Cancel();
+            cts.Dispose();
+        }
+        _timers.Clear();
+    }
+}

@@ -1,7 +1,8 @@
-﻿@page "/contact"
+@page "/contact"
 @using DentalCLinic.Models
 @using Microsoft.JSInterop
 @inject IJSRuntime JS
+@inject ToastService ToastService
 
 <PageTitle>Contact Us - Oceanside Dental Centre</PageTitle>
 
@@ -98,62 +99,38 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
                     <h2 class="h4 mb-4 text-ocean">Request an Appointment</h2>
-                    
-                    @if (showSuccessMessage)
-                    {
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>✓ Message Sent!</strong> We'll contact you soon.
-                            <button type="button" class="btn-close" @onclick="() => showSuccessMessage = false"></button>
-                        </div>
-                    }
-
-                    @if (showErrorMessage)
-                    {
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>✗ Error!</strong> @errorMessage
-                            <button type="button" class="btn-close" @onclick="() => showErrorMessage = false"></button>
-                        </div>
-                    }
 
                     <EditForm Model="@contactForm" OnValidSubmit="HandleSubmit">
-                        <DataAnnotationsValidator />
+                        <FluentValidator />
                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
-                            <InputText @bind-Value="contactForm.Name" class="form-control" id="name" placeholder="Your Name" />
+                            <InputText @bind-Value="contactForm.Name" class="form-control" id="name" autocomplete="name" />
                             <ValidationMessage For="@(() => contactForm.Name)" class="text-danger small" />
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <InputText @bind-Value="contactForm.Email" class="form-control" id="email" type="email" placeholder="name@example.com" />
+                                <InputText @bind-Value="contactForm.Email" class="form-control" id="email" type="email" autocomplete="email" />
                                 <ValidationMessage For="@(() => contactForm.Email)" class="text-danger small" />
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <InputText @bind-Value="contactForm.Phone" class="form-control" id="phone" placeholder="(250) 555-5555" />
+                                <InputText @bind-Value="contactForm.Phone" class="form-control" id="phone" autocomplete="tel" />
                                 <ValidationMessage For="@(() => contactForm.Phone)" class="text-danger small" />
                             </div>
                         </div>
                         
                         <div class="mb-3">
                             <label for="message" class="form-label">Message / Preferred Time</label>
-                            <InputTextArea @bind-Value="contactForm.Message" class="form-control" id="message" rows="4" placeholder="How can we help you?" />
+                            <InputTextArea @bind-Value="contactForm.Message" class="form-control" id="message" rows="4" />
                             <ValidationMessage For="@(() => contactForm.Message)" class="text-danger small" />
                         </div>
                         
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary-custom text-white px-4 py-2" disabled="@isSubmitting">
-                                @if (isSubmitting)
-                                {
-                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                    <span>Sending...</span>
-                                }
-                                else
-                                {
-                                    <span>Send Request</span>
-                                }
+                            <button type="submit" class="btn btn-primary-custom text-white px-4 py-2 @(isSubmitting ? "btn-loading" : "")" disabled="@isSubmitting">
+                                <span>@(isSubmitting ? "Sending..." : "Send Request")</span>
                             </button>
                         </div>
                     </EditForm>
@@ -166,9 +143,6 @@
 @code {
     private ContactFormModel contactForm = new();
     private bool isSubmitting = false;
-    private bool showSuccessMessage = false;
-    private bool showErrorMessage = false;
-    private string errorMessage = string.Empty;
 
     // TODO: Replace these with your actual EmailJS credentials
     private const string EMAILJS_PUBLIC_KEY = "mXFjDQyR3cPRKqaG4";
@@ -195,8 +169,6 @@
     private async Task HandleSubmit()
     {
         isSubmitting = true;
-        showSuccessMessage = false;
-        showErrorMessage = false;
 
         try
         {
@@ -222,20 +194,18 @@
             if (result.Success)
             {
                 // Success!
-                showSuccessMessage = true;
+                ToastService.ShowSuccess("Message Sent!", "We'll contact you soon regarding your request.", 6000);
                 contactForm = new ContactFormModel(); // Reset form
             }
             else
             {
-                showErrorMessage = true;
-                errorMessage = result.Message;
+                ToastService.ShowError("Submission Error", result.Message, 8000);
             }
         }
         catch (Exception ex)
         {
             // Error
-            showErrorMessage = true;
-            errorMessage = "An error occurred while sending. Please try again later.";
+            ToastService.ShowError("System Error", "An error occurred while sending. Please try again later.", 8000);
             Console.WriteLine($"Error sending email: {ex.Message}");
         }
         finally

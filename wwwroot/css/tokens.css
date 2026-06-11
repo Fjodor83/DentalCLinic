@@ -6,6 +6,7 @@
    Loaded BEFORE coastal-elements.css and app.css.
    Palette: warm ocre brand, sage green accent, deep slate,
    rich ink text, soft neutral surfaces.
+   Dark mode: [data-theme="dark"] attribute on <html>.
    ============================================================ */
 
 :root {
@@ -53,6 +54,7 @@
 
     /* Status (WCAG-validated pairings) */
     --primitive-green-700: #15803D;
+    --primitive-green-100: #DCFCE7;
     --primitive-green-50:  #F0FDF4;
     --primitive-amber-700: #B45309;
     --primitive-amber-50:  #FFFBEB;
@@ -131,4 +133,109 @@
     /* Icon medallion */
     --medallion-bg:     var(--primitive-ocre-50);
     --medallion-fg:     var(--color-ocean-blue);
+
+    /* ========================================================
+       TYPOGRAPHY SCALE (rigid, semantic)
+       ======================================================== */
+    --text-xs:   0.75rem;    /* 12px — label small, helper text */
+    --text-sm:   0.8125rem;  /* 13px — metric label, badge, caption */
+    --text-base: 1rem;       /* 16px — body copy */
+    --text-md:   1.0625rem;  /* 17px — nav links, lead-in */
+    --text-lg:   1.25rem;    /* 20px — card title */
+    --text-xl:   1.5rem;     /* 24px — metric value, section sub */
+    --text-2xl:  2rem;       /* 32px — h2 inner */
+    --text-3xl:  2.5rem;     /* 40px — h1 section */
+    --text-4xl:  3.75rem;    /* 60px — hero h1 */
+
+    --font-weight-normal:   400;
+    --font-weight-medium:   500;
+    --font-weight-semibold: 600;
+    --font-weight-bold:     700;
+
+    /* ========================================================
+       MOTION (WCAG 2.1 — prefers-reduced-motion aware)
+       ======================================================== */
+    --motion-easing:     cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-fast:       150ms;   /* hover state, micro-interactions */
+    --motion-base:       200ms;   /* standard transitions */
+    --motion-open:       300ms;   /* modal / panel open */
+    --motion-slow:       350ms;   /* page transitions */
+
+    /* ========================================================
+       FORM ELEMENTS
+       ======================================================== */
+    --input-height:       36px;
+    --input-height-lg:    44px;
+    --input-padding-x:    0.75rem;
+    --input-padding-y:    0.5rem;
+    --input-border-color: var(--color-border-subtle);
+    --input-border-width: 0.5px;
+    --input-border-focus: var(--color-ocean-blue);
+    --input-focus-ring:   0 0 0 3px rgba(98, 85, 18, 0.20);
+    --input-radius:       var(--radius-md);
+    --input-bg:           var(--color-surface);
+    --input-color:        var(--color-primary-text);
+
+    /* ========================================================
+       BORDER & RADIUS
+       ======================================================== */
+    --border-width-default: 0.5px;
+    --border-width-accent:  2px;
+    --border-radius-sm:  6px;
+    --border-radius-md:  8px;    /* componenti */
+    --border-radius-lg: 12px;   /* card */
+    --border-radius-xl: 20px;
+    --border-radius-full: 9999px;
+
+    /* Legacy aliases (existing markup compatibility) */
+    --radius-sm:   var(--border-radius-sm);
+    --radius-md:   var(--border-radius-md);
+    --radius-lg:   var(--border-radius-lg);
+    --radius-xl:   var(--border-radius-xl);
+    --radius-full: var(--border-radius-full);
+
+    /* Spacing */
+    --spacing-xs:  0.5rem;
+    --spacing-sm:  1rem;
+    --spacing-md:  1.5rem;
+    --spacing-lg:  2rem;
+    --spacing-xl:  3rem;
+    --spacing-2xl: 4rem;
+
+    /* Z-Index */
+    --z-dropdown: 1000;
+    --z-sticky:   1020;
+    --z-fixed:    1030;
+    --z-modal:    1040;
+    --z-popover:  1050;
+    --z-tooltip:  1060;
+    --z-toast:    1070;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(22, 41, 54, 0.04), 0 1px 3px rgba(22, 41, 54, 0.06);
+    --shadow-md: 0 2px 6px rgba(22, 41, 54, 0.05), 0 6px 16px rgba(22, 41, 54, 0.07);
+    --shadow-lg: 0 8px 24px rgba(22, 41, 54, 0.08), 0 2px 6px rgba(22, 41, 54, 0.04);
+    --shadow-xl: 0 20px 48px rgba(22, 41, 54, 0.12), 0 6px 16px rgba(22, 41, 54, 0.06);
+    --shadow-glow: 0 0 0 3px var(--color-focus-ring);
+
+    /* Transitions (legacy aliases) */
+    --transition-fast: var(--motion-fast) var(--motion-easing);
+    --transition-base: var(--motion-base) var(--motion-easing);
+    --transition-slow: var(--motion-slow) var(--motion-easing);
+}
+
+
+/* ============================================================
+   REDUCED MOTION — override all transitions globally
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --motion-fast: 0ms;
+        --motion-base: 0ms;
+        --motion-open: 0ms;
+        --motion-slow: 0ms;
+        --transition-fast: 0ms;
+        --transition-base: 0ms;
+        --transition-slow: 0ms;
+    }
 }

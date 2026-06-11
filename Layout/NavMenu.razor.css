@@ -78,8 +78,9 @@
 .navbar-nav .nav-link {
     position: relative;
     color: var(--color-secondary-text);
-    font-weight: 500;
-    transition: color var(--transition-base);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9375rem; /* 15px */
+    transition: color var(--motion-base) var(--motion-easing);
     padding: 0.5rem 0.875rem;
 }
 
@@ -127,13 +128,12 @@
 
 @media (max-width: 1199.98px) {
     .navbar-collapse {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-radius: var(--radius-lg);
+        background: var(--color-surface);
+        border-radius: var(--border-radius-lg);
         margin-top: 1rem;
         padding: 1rem;
         box-shadow: var(--shadow-lg);
-        animation: mobileMenuSlide var(--transition-base) ease-out;
+        animation: mobileMenuSlide var(--motion-base) var(--motion-easing) both;
     }
 
     @keyframes mobileMenuSlide {
@@ -198,16 +198,13 @@
 
 /* Reduced motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-
     .nav-link::before,
     .dropdown-item::before,
-    .dropdown-toggle::after {
-        transition: none;
-    }
-
+    .dropdown-toggle::after,
     .navbar-collapse,
     .dropdown-menu {
-        animation: none;
+        animation: none !important;
+        transition: none !important;
     }
 }
 

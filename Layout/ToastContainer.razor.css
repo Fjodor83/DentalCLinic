@@ -1,0 +1,163 @@
+/* ============================================================
+   TOAST CONTAINER — CSS isolation (ToastContainer.razor.css)
+   Spec: slide-in 300ms, no position fixed (usa flusso normale
+   tramite portal posizionato nel layout).
+   ============================================================ */
+
+.toast-region {
+    position: fixed;            /* portal overlay visivo */
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: var(--z-toast, 1070);
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 340px;
+    max-width: calc(100vw - 2rem);
+    pointer-events: none;       /* passa attraverso clic se vuoto */
+}
+
+/* ============================================================
+   TOAST ITEM
+   ============================================================ */
+
+.toast-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-subtle);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    pointer-events: all;
+    position: relative;
+
+    /* Slide-in da destra — 300ms come da spec */
+    animation: toast-slide-in var(--motion-open, 300ms) var(--motion-easing, cubic-bezier(0.4, 0, 0.2, 1)) both;
+}
+
+/* Accento laterale colorato per tipologia */
+.toast-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+}
+
+.toast-item--success::before { background: var(--color-status-success); }
+.toast-item--error::before   { background: var(--color-status-danger); }
+.toast-item--warning::before { background: var(--color-status-warning); }
+.toast-item--info::before    { background: var(--color-ocean-blue); }
+
+/* ============================================================
+   TOAST ICON
+   ============================================================ */
+
+.toast-item__icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.toast-item--success .toast-item__icon { color: var(--color-status-success); }
+.toast-item--error   .toast-item__icon { color: var(--color-status-danger); }
+.toast-item--warning .toast-item__icon { color: var(--color-status-warning); }
+.toast-item--info    .toast-item__icon { color: var(--color-ocean-blue); }
+
+/* ============================================================
+   TOAST CONTENT
+   ============================================================ */
+
+.toast-item__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.toast-item__title {
+    margin: 0 0 0.125rem;
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-text);
+    line-height: 1.35;
+}
+
+.toast-item__body {
+    margin: 0;
+    font-size: var(--text-xs);
+    color: var(--color-secondary-text);
+    line-height: 1.4;
+}
+
+/* ============================================================
+   TOAST CLOSE BUTTON
+   ============================================================ */
+
+.toast-item__close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    margin-top: -2px;
+    transition: color var(--motion-fast) var(--motion-easing),
+                background-color var(--motion-fast) var(--motion-easing);
+}
+
+.toast-item__close:hover {
+    color: var(--color-primary-text);
+    background-color: var(--color-surface-muted);
+}
+
+.toast-item__close:focus-visible {
+    outline: 2px solid var(--color-ocean-blue);
+    outline-offset: 1px;
+}
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+
+@keyframes toast-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — stack bottom-center su mobile
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+    .toast-region {
+        bottom: 1rem;
+        right: 0.75rem;
+        left: 0.75rem;
+        width: auto;
+    }
+
+    @keyframes toast-slide-in {
+        from {
+            opacity: 0;
+            transform: translateY(1rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
