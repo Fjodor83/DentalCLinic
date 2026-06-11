@@ -1,13 +1,11 @@
 /* ============================================================
-   OCEANSIDE DENTAL — DESIGN TOKENS
-   Direction: CLINICAL CALM (premium / enterprise)
+   DENTAL CLINIC — DESIGN TOKENS
+   Direction: NATURAL WELLNESS (premium / warm clinical)
    3-tier architecture: Primitive → Semantic → Component
    ------------------------------------------------------------
    Loaded BEFORE coastal-elements.css and app.css.
-   The semantic --color-* names are preserved so existing markup
-   keeps working; their VALUES are retuned to the Clinical Calm
-   palette: off-white canvas, deep clinical blue, calm sage,
-   ink text, hairline borders, soft neutral shadows.
+   Palette: warm ocre brand, sage green accent, deep slate,
+   rich ink text, soft neutral surfaces.
    ============================================================ */
 
 :root {
@@ -16,30 +14,41 @@
        LAYER 1 — PRIMITIVE   (raw, context-free values)
        ======================================================== */
 
-    /* Clinical blue — evolved from the legacy #0077BE, deeper & calmer */
-    --primitive-blue-800: #0A3A6B;
-    --primitive-blue-700: #0D4A8A;
-    --primitive-blue-600: #1466B8;   /* brand base */
-    --primitive-blue-500: #2B7DD4;
-    --primitive-blue-300: #9DC4E8;
-    --primitive-blue-100: #DCEAF7;
-    --primitive-blue-50:  #EFF5FB;
+    /* Ocre/Gold — warm brand primary */
+    --primitive-ocre-900: #3D340B;
+    --primitive-ocre-800: #4E4210;
+    --primitive-ocre-700: #625512;   /* brand base */
+    --primitive-ocre-600: #7A6A18;
+    --primitive-ocre-400: #A89340;
+    --primitive-ocre-200: #DDD0A0;
+    --primitive-ocre-100: #F0E9CF;
+    --primitive-ocre-50:  #F9F5E8;
 
-    /* Sage — calm secondary / health accent */
-    --primitive-sage-700: #2F5E52;
-    --primitive-sage-600: #3F7A6B;
-    --primitive-sage-100: #E3EFEA;
-    --primitive-sage-50:  #F0F6F3;
+    /* Sage green — calm secondary / health accent */
+    --primitive-sage-800: #5A6030;
+    --primitive-sage-700: #6F7838;
+    --primitive-sage-600: #8E964C;   /* sage accent base */
+    --primitive-sage-400: #AEBB70;
+    --primitive-sage-100: #E8EDCD;
+    --primitive-sage-50:  #F3F6E4;
 
-    /* Ink & neutrals (cool, clinical) */
-    --primitive-ink-900:   #0F1B2D;
-    --primitive-slate-700: #334155;
-    --primitive-slate-600: #475569;
-    --primitive-slate-500: #64748B;
-    --primitive-slate-400: #94A3B8;
-    --primitive-slate-200: #E6EBF1;   /* hairline */
-    --primitive-slate-100: #EEF2F6;
-    --primitive-canvas:    #FBFCFD;   /* off-white page bg */
+    /* Deep slate — structural / hero colour */
+    --primitive-slate-deep-900: #0F1E27;
+    --primitive-slate-deep-800: #162936;   /* ink text */
+    --primitive-slate-deep-700: #223748;
+    --primitive-slate-deep-600: #344C5A;   /* hero / deep bg */
+    --primitive-slate-deep-400: #5F7A8A;
+    --primitive-slate-deep-200: #B0C2CC;
+    --primitive-slate-deep-100: #D8E4EA;
+    --primitive-slate-deep-50:  #EEF4F7;
+
+    /* Neutral / UI greys */
+    --primitive-neutral-700: #475569;
+    --primitive-neutral-500: #64748B;
+    --primitive-neutral-400: #94A3B8;
+    --primitive-neutral-200: #E4EBF0;
+    --primitive-neutral-100: #F1F5F7;
+    --primitive-canvas:    #FAFBF8;   /* warm off-white page bg */
     --primitive-white:     #FFFFFF;
 
     /* Status (WCAG-validated pairings) */
@@ -54,31 +63,31 @@
        LAYER 2 — SEMANTIC   (meaning; names used across the site)
        ======================================================== */
 
-    /* Brand (legacy ocean names → clinical blue) */
-    --color-ocean-blue:     var(--primitive-blue-600);
-    --color-ocean-dark:     var(--primitive-blue-700);
-    --color-ocean-deep:     var(--primitive-blue-800);
-    --color-ocean-light:    var(--primitive-blue-500);
-    --color-coastal-light:  var(--primitive-blue-300);
-    --color-aqua-accent:    var(--primitive-sage-600);   /* text-aqua → calm sage */
-    --color-sand-beige:     var(--primitive-slate-100);
+    /* Brand (legacy ocean names → warm ocre/slate) */
+    --color-ocean-blue:     var(--primitive-ocre-700);     /* primary brand */
+    --color-ocean-dark:     var(--primitive-ocre-800);     /* darker brand */
+    --color-ocean-deep:     var(--primitive-slate-deep-600); /* hero bg */
+    --color-ocean-light:    var(--primitive-ocre-600);
+    --color-coastal-light:  var(--primitive-ocre-200);
+    --color-aqua-accent:    var(--primitive-sage-600);     /* sage green accent */
+    --color-sand-beige:     var(--primitive-neutral-100);
 
     /* Text */
-    --color-primary-text:   var(--primitive-ink-900);
-    --color-secondary-text: var(--primitive-slate-600);
-    --color-text-muted:     var(--primitive-slate-500);
+    --color-primary-text:   var(--primitive-slate-deep-800); /* #162936 */
+    --color-secondary-text: var(--primitive-neutral-700);
+    --color-text-muted:     var(--primitive-neutral-500);
     --color-on-accent:      var(--primitive-white);
 
     /* Surfaces / background */
     --color-bg-light:       var(--primitive-canvas);
-    --color-bg-tint:        var(--primitive-blue-50);
+    --color-bg-tint:        var(--primitive-ocre-50);
     --color-white:          var(--primitive-white);
     --color-surface:        var(--primitive-white);
-    --color-surface-muted:  var(--primitive-slate-100);
+    --color-surface-muted:  var(--primitive-neutral-100);
 
     /* Lines & focus */
-    --color-border-subtle:  var(--primitive-slate-200);
-    --color-focus-ring:     rgba(20, 102, 184, 0.35);
+    --color-border-subtle:  var(--primitive-neutral-200);
+    --color-focus-ring:     rgba(98, 85, 18, 0.30);
 
     /* Status */
     --color-status-success: var(--primitive-green-700);
@@ -92,7 +101,7 @@
     /* App shell */
     --header-bg:        var(--color-white);
     --header-border:    var(--color-border-subtle);
-    --footer-bg:        var(--primitive-ink-900);
+    --footer-bg:        var(--primitive-slate-deep-800);
     --footer-text:      rgba(255, 255, 255, 0.78);
     --footer-heading:   var(--primitive-white);
     --footer-line:      rgba(255, 255, 255, 0.12);
@@ -111,7 +120,7 @@
     --card-surface:     var(--color-surface);
     --card-border:      var(--color-border-subtle);
 
-    /* Hero (premium deep-blue band) */
+    /* Hero (deep slate band) */
     --hero-bg:          var(--color-ocean-deep);
     --hero-text:        var(--color-on-accent);
 
@@ -120,6 +129,6 @@
     --section-muted:    var(--color-surface-muted);
 
     /* Icon medallion */
-    --medallion-bg:     var(--primitive-blue-50);
+    --medallion-bg:     var(--primitive-ocre-50);
     --medallion-fg:     var(--color-ocean-blue);
 }
