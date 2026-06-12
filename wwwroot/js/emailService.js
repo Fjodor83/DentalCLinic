@@ -3,7 +3,7 @@ window.emailService = {
     // Initialize EmailJS (call this once when the page loads)
     initialize: function (publicKey) {
         if (typeof emailjs !== 'undefined') {
-            emailjs.init(publicKey);
+            emailjs.init({ publicKey: publicKey });
             console.log('EmailJS initialized successfully');
             return true;
         } else {
