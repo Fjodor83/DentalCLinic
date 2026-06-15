@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+    <!-- Cloudflare comprime gia' al edge: evitiamo le copie .br/.gz (dimezzano il numero di file e fanno bloccare il drag & drop) -->
+    <CompressionEnabled>false</CompressionEnabled>
   </PropertyGroup>
 
   <ItemGroup>
